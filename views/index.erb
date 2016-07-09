@@ -38,6 +38,11 @@
           content: "I haven't left yet!"
         });
 
+        var ctaLayer = new google.maps.KmlLayer({
+          url: '<%= url("/route.kml") %>',
+          map: map
+        });
+
         marker.addListener('click', function() {
           infowindow.open(map, marker);
         });

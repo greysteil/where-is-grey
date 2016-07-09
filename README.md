@@ -20,6 +20,7 @@ A simple app to plot my progress around the world
 - Metadata on each check-in
   - Date & time
   - Links to photos / blog posts (would need a way to add, too)
+    - Should be easy to display with Google maps info windows
 - Originally intended route
   - Trivial using KML export
 
