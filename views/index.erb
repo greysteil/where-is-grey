@@ -39,8 +39,10 @@
         });
 
         var ctaLayer = new google.maps.KmlLayer({
+          map: map,
           url: '<%= url("/route.kml") %>',
-          map: map
+          preserveViewport: true,
+          suppressInfoWindows: true
         });
 
         marker.addListener('click', function() {
