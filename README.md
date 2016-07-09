@@ -21,6 +21,7 @@ A simple app to plot my progress around the world
   - Date & time
   - Links to photos / blog posts (would need a way to add, too)
 - Originally intended route
+  - Trivial using KML export
 
 
 ## Setup
