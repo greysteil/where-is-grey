@@ -10,6 +10,12 @@ class WhereIsGrey < Sinatra::Base
   set :static, true
 
   get '/' do
-    erb :index, locals: { api_key: Prius.get(:google_public_api_key) }
+    erb :index, locals: { api_key: google_public_api_key }
+  end
+
+  private
+
+  def google_public_api_key
+    Prius.get(:google_public_api_key)
   end
 end
