@@ -1,2 +1,2 @@
-require './app'
-run Sinatra::Application
+require './app/app'
+run WhereIsGrey
