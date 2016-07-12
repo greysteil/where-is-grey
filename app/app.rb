@@ -8,6 +8,7 @@ Prius.load(:google_public_api_key)
 class WhereIsGrey < Sinatra::Base
   set :public_folder, Proc.new { File.join(root, "static") }
   set :static, true
+  set :static_cache_control, [:public, max_age: 300]
 
   get '/' do
     erb :index, locals: { api_key: google_public_api_key }
