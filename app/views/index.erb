@@ -40,7 +40,7 @@
 
         var ctaLayer = new google.maps.KmlLayer({
           map: map,
-          url: '<%= url("/route.kml") %>',
+          url: '<%= url("/route.kml?version=#{Time.now.to_i}") %>',
           preserveViewport: true,
           suppressInfoWindows: true
         });
