@@ -42,7 +42,7 @@
           map: map,
           url: '<%= url("/route.kml?version=#{Time.now.to_i}") %>',
           preserveViewport: true,
-          suppressInfoWindows: true
+          suppressInfoWindows: false
         });
 
         marker.addListener('click', function() {
