@@ -1,6 +1,6 @@
 require 'sinatra'
-require "prius"
-require "dotenv" if development?
+require 'prius'
+require 'dotenv' if development?
 
 Dotenv.load if development?
 Prius.load(:google_public_api_key)

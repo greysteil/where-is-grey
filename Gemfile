@@ -4,6 +4,7 @@ gem 'sinatra', '~> 1.4.7'       # Web framework
 gem 'puma'                      # Web server
 
 gem 'prius', '~> 1.0'           # Environment variable management
+gem 'rake', '~> 11.0'           # Task manager
 
 group :development do
   gem 'rspec', '~> 3.5'         # Testing framework
