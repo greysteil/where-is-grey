@@ -1,4 +1,6 @@
 require 'sinatra'
+require 'redis-sinatra'
+
 require 'prius'
 require 'spot'
 require 'dotenv' if development?
@@ -7,11 +9,13 @@ Dotenv.load if development?
 Prius.load(:google_public_api_key)
 Prius.load(:spot_feed_id)
 Prius.load(:spot_feed_password, required: false)
+Prius.load(:redis_url)
 
 class WhereIsGrey < Sinatra::Base
   set :public_folder, Proc.new { File.join(root, "static") }
   set :static, true
   set :static_cache_control, [:public, max_age: 300]
+  register Sinatra::Cache
 
   get '/' do
     erb :index,
@@ -28,7 +32,9 @@ class WhereIsGrey < Sinatra::Base
   end
 
   def latest_check_in
-    spot_client.messages.latest
+    settings.cache.fetch(:latest_spot_check_in, expire_in: 300) do
+      spot_client.messages.latest
+    end
   end
 
   def spot_client
