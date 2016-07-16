@@ -1,2 +1,3 @@
 export GOOGLE_PUBLIC_API_KEY="API_KEY"
+export SPOT_FEED_ID="FEED_ID"
 export PING_URL="http://example.com"

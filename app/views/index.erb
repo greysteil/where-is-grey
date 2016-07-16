@@ -20,7 +20,7 @@
     <script>
       var map;
       function initMap() {
-        var myLatLng = {lat: 51.548974, lng: -0.0709971};
+        var myLatLng = {lat: <%= latest_check_in.latitude %>, lng: <%= latest_check_in.longitude %>};
 
         // Create a map object and specify the DOM element for display.
         var map = new google.maps.Map(document.getElementById('map'), {
@@ -35,7 +35,7 @@
         });
 
         var infowindow = new google.maps.InfoWindow({
-          content: '<div id="content"><p>I haven\'t left yet!</p></div>'
+          content: '<div id="content"><p><strong>Last check-in:</strong> <%= latest_check_in.created_at.strftime('%F %l:%M %P') %></p></div>'
         });
 
         var ctaLayer = new google.maps.KmlLayer({
