@@ -1,5 +1,4 @@
 source 'https://rubygems.org'
-
 ruby '2.3.1'
 
 gem 'sinatra', '~> 1.4.7'       # Web framework
@@ -8,7 +7,7 @@ gem 'puma'                      # Web server
 gem 'prius', '~> 1.0'           # Environment variable management
 gem 'rake', '~> 11.0'           # Task manager
 
-gem 'spot-gps', '~> 0.2.0'      # Client library for SPOT GPS tracker
+gem 'spot-gps', '~> 0.2.1'      # Client library for SPOT GPS tracker
 
 group :development do
   gem 'rspec', '~> 3.5'         # Testing framework
