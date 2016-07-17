@@ -11,15 +11,19 @@ gem 'rake', '~> 11.0'           # Task manager
 
 gem 'spot-gps', '~> 0.2.2'      # Client library for SPOT GPS tracker
 
-group :development do
+group :development, :test do
+  gem 'pry'                     # Debugging console
+
+  gem 'dotenv', require: false  # Local environment variables
+  gem 'shotgun'                 # Auto-reloading web server
+end
+
+group :test do
   gem 'rspec', '~> 3.5'         # Testing framework
   gem 'rspec-its'               # Allows `its(:method) { ... }`
   gem 'rack-test'               # Testing Sinatra
 
   gem 'webmock', '~> 2.1.0'     # Mocking API calls
 
-  gem 'pry'                     # Debugging console
-
-  gem 'dotenv', require: false  # Local environment variables
-  gem 'shotgun'                 # Auto-reloading web server
+  gem 'database_cleaner'        # Clean up database after each run
 end

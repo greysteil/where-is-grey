@@ -3,6 +3,7 @@ ENV["RACK_ENV"] = "test"
 require "rspec/its"
 require "webmock/rspec"
 require "dotenv"
+require "database_cleaner"
 
 Dotenv.load(File.expand_path("../../dummy-env", __FILE__))
 
@@ -13,6 +14,12 @@ WebMock.disable_net_connect!
 RSpec.configure do |config|
   config.mock_with(:rspec) { |mocks| mocks.verify_partial_doubles = true }
   config.raise_errors_for_deprecations!
+
+  config.around(:each) do |example|
+    DatabaseCleaner.cleaning do
+      example.run
+    end
+  end
 end
 
 def app
