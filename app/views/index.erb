@@ -22,7 +22,10 @@
       var map;
 
       function initMap() {
-        var myLatLng = {lat: <%= latest_check_in.latitude %>, lng: <%= latest_check_in.longitude %>};
+        var myLatLng = {
+          lat: <%= latest_check_in&.latitude || 51.56853 %>,
+          lng: <%= latest_check_in&.longitude || 0.01077 %>
+        };
 
         // Create a map object and specify the DOM element for display.
         map = new google.maps.Map(document.getElementById('map'), {
@@ -30,16 +33,23 @@
           zoom: 4
         });
 
-        // Create a marker and set its position.
-        var marker = new google.maps.Marker({
-          map: map,
-          position: myLatLng
-        });
+        <% unless latest_check_in.nil? %>
+          // Create a marker and set its position.
+          var marker = new google.maps.Marker({
+            map: map,
+            position: myLatLng
+          });
 
-        var infowindow = new google.maps.InfoWindow({
-          content: '<div id="content"><p><strong>Last check-in:</strong> <%= latest_check_in.created_at.strftime('%F %l:%M %P') %></p></div>'
-        });
+          var infowindow = new google.maps.InfoWindow({
+            content: '<div id="content"><p><strong>Last check-in:</strong> <%= latest_check_in.created_at.strftime('%F %l:%M %P') %></p></div>'
+          });
 
+          marker.addListener('click', function() {
+            infowindow.open(map, marker);
+          });
+        <% end %>
+
+        // Parse the route KML and display it on the map
         var kmlParser = new geoXML3.parser({
           map: map,
           singleInfoWindow: true,
@@ -47,10 +57,6 @@
         });
 
         kmlParser.parse('/route.kml')
-
-        marker.addListener('click', function() {
-          infowindow.open(map, marker);
-        });
       }
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=<%= api_key %>&callback=initMap"
