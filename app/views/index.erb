@@ -49,17 +49,28 @@
           });
         <% end %>
 
+        function polylineLength(polyline) {
+          var meters = google.maps.geometry.spherical.computeLength(polyline.getPath());
+          return meters * 0.000621371
+        }
+
         // Parse the route KML and display it on the map
         var kmlParser = new geoXML3.parser({
           map: map,
           singleInfoWindow: true,
-          zoom: false
+          zoom: false,
+          afterParse: function (docSet) {
+            for (var i = 0; i < docSet[0].gpolylines.length; i++) {
+              poly = docSet[0].gpolylines[i];
+              poly.infoWindowOptions.content += '<p>' + polylineLength(poly).toFixed(0) + ' miles </p>';
+            }
+          }
         });
 
         kmlParser.parse('/route.kml')
       }
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=<%= api_key %>&callback=initMap"
+    <script src="https://maps.googleapis.com/maps/api/js?key=<%= api_key %>&callback=initMap&libraries=geometry"
     async defer></script>
   </body>
 </html>
