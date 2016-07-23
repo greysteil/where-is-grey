@@ -61,7 +61,7 @@
           zoom: false,
           afterParse: function (docSet) {
             for (var i = 0; i < docSet[0].gpolylines.length; i++) {
-              poly = docSet[0].gpolylines[i];
+              var poly = docSet[0].gpolylines[i];
               poly.infoWindowOptions.content += '<p>' + polylineLength(poly).toFixed(0) + ' miles </p>';
             }
           }
