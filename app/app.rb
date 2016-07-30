@@ -1,5 +1,6 @@
 require 'sinatra'
 require 'redis-sinatra'
+require_relative '../config/initializers/active_record'
 
 require 'prius'
 require 'spot'
@@ -16,6 +17,8 @@ class WhereIsGrey < Sinatra::Base
   set :static, true
   set :static_cache_control, [:public, max_age: 300]
   register Sinatra::Cache
+
+  ActiveRecordInitializer.new.run
 
   get '/' do
     erb :index,

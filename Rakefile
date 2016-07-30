@@ -1,15 +1,5 @@
-require 'net/http'
-require 'prius'
+# Wake up a Heroku dyno alive by pinging it
+import 'tasks/dyno_ping.rake'
 
-if ENV['RACK_ENV'].nil? || ENV['RACK_ENV'].to_sym == :development
-  require 'dotenv'
-  Dotenv.load
-end
-
-desc 'Pings PING_URL to keep a dyno alive'
-task :dyno_ping do
-  Prius.load(:ping_url)
-
-  uri = URI(Prius.get(:ping_url))
-  Net::HTTP.get_response(uri)
-end
+# ActiveRecord database tasks
+import 'tasks/active_record.rake'

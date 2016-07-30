@@ -1,0 +1,18 @@
+production:
+  # This gets overwritten by Heroku, so we don't need to worry about it
+  adapter: postgresql
+  encoding: utf8
+
+development:
+  adapter: postgresql
+  encoding: utf8
+  host: localhost
+  port: 5432
+  database: where-is-grey
+
+test:
+  adapter: postgresql
+  encoding: utf8
+  host: localhost
+  port: 5432
+  database: where-is-grey-test

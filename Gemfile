@@ -1,8 +1,11 @@
 source 'https://rubygems.org'
 ruby '2.3.1'
 
-gem 'sinatra', '~> 1.4.7'       # Web framework
+gem 'sinatra', '1.4.7'          # Web framework
 gem 'puma'                      # Web server
+gem 'activerecord', '5.0.0'     # Object-relational mapper
+
+gem 'pg', '~> 0.18.4'           # PostgreSQL gem
 
 gem 'redis-sinatra', '~> 1.4'   # Cache store
 
