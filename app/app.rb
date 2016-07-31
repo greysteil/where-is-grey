@@ -33,6 +33,6 @@ class WhereIsGrey < Sinatra::Base
   end
 
   def latest_check_in
-    CheckIn.last
+    CheckIn.order(sent_at: :asc).last
   end
 end
