@@ -4,17 +4,19 @@ require "rack/test"
 RSpec.describe WhereIsGrey do
   include Rack::Test::Methods
 
-  before do
-    spot_latest_url = SPOT.endpoint + Prius.get(:spot_feed_id) + '/latest.json'
-    stub_request(:get, spot_latest_url).to_return(
-      body: load_fixture('spot_latest.json'),
-      headers: { 'Content-Type' => 'application/json' }
-    )
-  end
-
   describe "/" do
     subject(:index) { get "/" }
-    its(:status) { is_expected.to eq(200) }
-    its(:body) { is_expected.to include("61.54875") }
+
+    context "with a recent check in" do
+      let!(:latest_check_in) { FactoryGirl.create(:check_in) }
+
+      its(:status) { is_expected.to eq(200) }
+      its(:body) { is_expected.to include(latest_check_in.latitude.to_s) }
+    end
+
+    context "with no recent check ins" do
+      its(:status) { is_expected.to eq(200) }
+      its(:body) { is_expected.to include("51.56853") }
+    end
   end
 end
