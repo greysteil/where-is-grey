@@ -43,12 +43,6 @@ GEM
     rack-test (0.6.3)
       rack (>= 1.0)
     rake (11.2.2)
-    redis (3.3.0)
-    redis-sinatra (1.4.0)
-      redis-store (~> 1.1.0)
-      sinatra (~> 1.4.0)
-    redis-store (1.1.7)
-      redis (>= 2.2)
     rspec (3.5.0)
       rspec-core (~> 3.5.0)
       rspec-expectations (~> 3.5.0)
@@ -101,7 +95,6 @@ DEPENDENCIES
   puma
   rack-test
   rake (~> 11.0)
-  redis-sinatra (~> 1.4)
   rspec (~> 3.5)
   rspec-its
   shotgun

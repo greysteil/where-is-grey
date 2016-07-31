@@ -8,8 +8,6 @@ gem 'activerecord', '5.0.0'     # Object-relational mapper
 gem 'pg', '~> 0.18.4'           # PostgreSQL gem
 gem 'sinatra-activerecord'      # Sinatra setup for AR
 
-gem 'redis-sinatra', '~> 1.4'   # Cache store
-
 gem 'prius', '~> 1.0'           # Environment variable management
 gem 'rake', '~> 11.0'           # Task manager
 
