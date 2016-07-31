@@ -11,7 +11,7 @@ gem 'sinatra-activerecord'      # Sinatra setup for AR
 gem 'prius', '~> 1.0'           # Environment variable management
 gem 'rake', '~> 11.0'           # Task manager
 
-gem 'spot-gps', '~> 0.2.2'      # Client library for SPOT GPS tracker
+gem 'spot-gps', '~> 0.2.3'      # Client library for SPOT GPS tracker
 
 group :development, :test do
   gem 'pry'                     # Debugging console
