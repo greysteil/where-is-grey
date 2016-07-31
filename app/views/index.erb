@@ -41,7 +41,7 @@
           });
 
           var infowindow = new google.maps.InfoWindow({
-            content: '<div id="content"><p><strong>Last check-in:</strong> <%= latest_check_in.sent_at.strftime('%F %l:%M %P') %></p></div>'
+            content: '<div id="content"><p><strong>Last check-in:</strong> <%= latest_check_in.sent_at.localtime.strftime('%F %l:%M %P') %></p></div>'
           });
 
           marker.addListener('click', function() {
