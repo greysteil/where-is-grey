@@ -17,13 +17,14 @@ ActiveRecord::Schema.define(version: 20160730230824) do
 
   create_table "check_ins", force: :cascade do |t|
     t.string   "message_type",                           null: false
-    t.datetime "spot_id",                                null: false
+    t.string   "spot_id",                                null: false
     t.datetime "sent_at",                                null: false
     t.decimal  "latitude",      precision: 16, scale: 6, null: false
     t.decimal  "longitude",     precision: 16, scale: 6, null: false
     t.string   "battery_state",                          null: false
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
+    t.index ["spot_id"], name: "index_check_ins_on_spot_id", unique: true, using: :btree
   end
 
 end

@@ -1,6 +1,8 @@
 require 'sinatra'
 require 'redis-sinatra'
-require_relative '../config/initializers/active_record'
+require "sinatra/activerecord"
+require_relative 'models/application_record'
+require_relative 'models/check_in'
 
 require 'prius'
 require 'spot'
@@ -13,12 +15,13 @@ Prius.load(:spot_feed_password, required: false)
 Prius.load(:redis_url)
 
 class WhereIsGrey < Sinatra::Base
+  register Sinatra::Cache
+  register Sinatra::ActiveRecordExtension
+
   set :public_folder, Proc.new { File.join(root, "static") }
   set :static, true
   set :static_cache_control, [:public, max_age: 300]
-  register Sinatra::Cache
-
-  ActiveRecordInitializer.new.run
+  set :database_file, File.expand_path("../../config/database.yml", __FILE__)
 
   get '/' do
     erb :index,

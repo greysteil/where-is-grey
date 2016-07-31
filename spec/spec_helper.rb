@@ -4,12 +4,12 @@ require "rspec/its"
 require "webmock/rspec"
 require "dotenv"
 require "database_cleaner"
+require "factory_girl"
+require_relative "factories/check_in"
 
 Dotenv.load(File.expand_path("../../dummy-env", __FILE__))
 
 require_relative "../app/app"
-
-WebMock.disable_net_connect!
 
 RSpec.configure do |config|
   config.mock_with(:rspec) { |mocks| mocks.verify_partial_doubles = true }
@@ -21,6 +21,10 @@ RSpec.configure do |config|
     end
   end
 end
+
+WebMock.disable_net_connect!
+
+FactoryGirl.allow_class_lookup = false
 
 def app
   WhereIsGrey

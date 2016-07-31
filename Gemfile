@@ -3,9 +3,10 @@ ruby '2.3.1'
 
 gem 'sinatra', '1.4.7'          # Web framework
 gem 'puma'                      # Web server
-gem 'activerecord', '5.0.0'     # Object-relational mapper
 
+gem 'activerecord', '5.0.0'     # Object-relational mapper
 gem 'pg', '~> 0.18.4'           # PostgreSQL gem
+gem 'sinatra-activerecord'      # Sinatra setup for AR
 
 gem 'redis-sinatra', '~> 1.4'   # Cache store
 
@@ -27,6 +28,8 @@ group :test do
   gem 'rack-test'               # Testing Sinatra
 
   gem 'webmock', '~> 2.1.0'     # Mocking API calls
+
+  gem 'factory_girl'            # Quickly instantiate models
 
   gem 'database_cleaner'        # Clean up database after each run
 end
