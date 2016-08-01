@@ -22,7 +22,8 @@ class WhereIsGrey < Sinatra::Base
     erb :index,
         locals: {
           api_key: google_public_api_key,
-          latest_check_in: latest_check_in
+          latest_check_in: latest_check_in,
+          path_so_far: path_so_far
         }
   end
 
@@ -34,5 +35,14 @@ class WhereIsGrey < Sinatra::Base
 
   def latest_check_in
     CheckIn.order(sent_at: :asc).last
+  end
+
+  def path_so_far
+    CheckIn.order(sent_at: :asc).map do |check_in|
+      {
+        latitude: check_in.latitude,
+        longitude: check_in.longitude
+      }
+    end
   end
 end

@@ -49,6 +49,25 @@
           });
         <% end %>
 
+        <% unless path_so_far.length < 2 %>
+          // Create a polyline of the path so far.
+          var pathCoords = [
+            <% path_so_far.each do |coord| %>
+              { lat: <%= coord[:latitude] %>, lng: <%= coord[:longitude] %> },
+            <% end %>
+          ]
+
+          var pathSoFar = new google.maps.Polyline({
+            path: pathCoords,
+            geodesic: true,
+            strokeColor: '#FF0000',
+            strokeOpacity: 1.0,
+            strokeWeight: 2
+          });
+
+          pathSoFar.setMap(map);
+        <% end %>
+
         function polylineLength(polyline) {
           var meters = google.maps.geometry.spherical.computeLength(polyline.getPath());
           return meters * 0.000621371
