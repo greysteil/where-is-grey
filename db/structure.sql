@@ -54,7 +54,8 @@ CREATE TABLE check_ins (
     longitude numeric(16,6) NOT NULL,
     battery_state character varying NOT NULL,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    last_before_discontinuity boolean DEFAULT false NOT NULL
 );
 
 
@@ -130,6 +131,6 @@ CREATE UNIQUE INDEX index_check_ins_on_spot_id ON check_ins USING btree (spot_id
 
 SET search_path TO "$user",public;
 
-INSERT INTO schema_migrations (version) VALUES ('20160730230824');
+INSERT INTO schema_migrations (version) VALUES ('20160730230824'), ('20160801202023');
 
 
