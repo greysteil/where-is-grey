@@ -50,17 +50,7 @@
         <% end %>
 
         // Create a polyline of the path so far.
-        var paths = [
-          <% path_so_far.each do |path| %>
-            <% unless path.length < 2 %>
-              [
-                <% path.each do |coord| %>
-                  { lat: <%= coord[:latitude] %>, lng: <%= coord[:longitude] %> },
-                <% end %>
-              ],
-            <% end %>
-          <% end %>
-        ]
+        var paths = <%= path_so_far.to_json %>
 
         for (var i = 0; i < paths.length; i++) {
           var pathSoFar = new google.maps.Polyline({

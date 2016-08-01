@@ -42,8 +42,8 @@ class WhereIsGrey < Sinatra::Base
     path = []
     CheckIn.order(sent_at: :asc).each do |check_in|
       coord = {
-        latitude: check_in.latitude,
-        longitude: check_in.longitude
+        lat: check_in.latitude.to_f,
+        lng: check_in.longitude.to_f
       }
       path << coord
 
@@ -56,5 +56,7 @@ class WhereIsGrey < Sinatra::Base
     unless CheckIn.order(sent_at: :asc).last.last_before_discontinuity?
       paths << path
     end
+
+    paths
   end
 end
