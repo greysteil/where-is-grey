@@ -38,11 +38,23 @@ class WhereIsGrey < Sinatra::Base
   end
 
   def path_so_far
-    CheckIn.order(sent_at: :asc).map do |check_in|
-      {
+    paths = []
+    path = []
+    CheckIn.order(sent_at: :asc).each do |check_in|
+      coord = {
         latitude: check_in.latitude,
         longitude: check_in.longitude
       }
+      path << coord
+
+      if check_in.last_before_discontinuity?
+        paths << path
+        path = []
+      end
+    end
+
+    unless CheckIn.order(sent_at: :asc).last.last_before_discontinuity?
+      paths << path
     end
   end
 end
