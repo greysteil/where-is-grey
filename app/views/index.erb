@@ -66,6 +66,25 @@
           });
 
           pathSoFar.setMap(map);
+
+          // Add an infoWindow to the path
+          var pathInfoWindow = new google.maps.InfoWindow({
+            content: '<h3>Route so far</h3><p>Total distance: ' + polylineLength(pathSoFar).toFixed(0) + ' miles</p>',
+            pixelOffset: new google.maps.Size(0, 2)
+          });
+
+          pathSoFar.infoWindow = pathInfoWindow;
+
+          // Infowindow-opening event handler
+          google.maps.event.addListener(pathSoFar, 'click', function(e) {
+            pathSoFar.infoWindow.close();
+            if (e && e.latLng) {
+              pathSoFar.infoWindow.setPosition(e.latLng);
+            } else {
+              pathSoFar.infoWindow.setPosition(point);
+            }
+            pathSoFar.infoWindow.open(pathSoFar.map || pathSoFar.polylines[0].map);
+          });
         <% end %>
 
         function polylineLength(polyline) {
@@ -81,7 +100,7 @@
           afterParse: function (docSet) {
             for (var i = 0; i < docSet[0].gpolylines.length; i++) {
               var poly = docSet[0].gpolylines[i];
-              poly.infoWindowOptions.content += '<p>' + polylineLength(poly).toFixed(0) + ' miles </p>';
+              poly.infoWindowOptions.content += '<p>' + polylineLength(poly).toFixed(0) + ' miles</p>';
             }
           }
         });
