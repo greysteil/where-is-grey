@@ -2,30 +2,22 @@
 
 A simple app to plot my progress around the world
 
+## How it works
 
-## Features
+- Route taken (so far) is built up from check-ins from my SPOT GPS tracker.
+  Every 10 minutes a job is run to ask SPOT for all recent check-ins, and
+  stores them (since SPOT stop making them available after 7 days)
+- Latest check-in marker is the last SPOT check-in
+- Proposed route map is stored as a KML document, which is then parsed and
+  plotted on a Google map
 
-**Must have:**
-
-- Current location, and all previous check-ins, on a map
-  - Google Maps API presumably the best way to go here?
-  - Pull check-in details from SPOT
-    - Poll http://faq.findmespot.com/index.php?action=showEntry&data=69
-    - Need to store the data
-      - SPOT delete it after 30 days
-      - SPOT rate-limit API to one request every 2.5 minutes
-
-**Nice to have:**
-
-- Metadata on each check-in
-  - Date & time
-  - Links to photos / blog posts (would need a way to add, too)
-    - Should be easy to display with Google maps info windows
-- Originally intended route
-  - Trivial using KML export
-
-
-## Setup
+## Technical setup
 
 - Postgres database
 - Sinatra backend
+
+## Potential improvements
+
+- Explanation page (what is this website)
+- Stats page (per day elevation, hours ridden, miles travelled)
+- Better info windows on route so far (better information)
