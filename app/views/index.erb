@@ -51,6 +51,7 @@
 
         // Create a polyline of the path so far.
         var paths = <%= path_so_far.to_json %>
+        var lengthSoFar = 0
 
         for (var i = 0; i < paths.length; i++) {
           var pathSoFar = new google.maps.Polyline({
@@ -63,9 +64,11 @@
 
           pathSoFar.setMap(map);
 
+          lengthSoFar += polylineLength(pathSoFar)
+
           // Add an infoWindow to the path
           var pathInfoWindow = new google.maps.InfoWindow({
-            content: '<h3>Route so far</h3><p>Total distance: ' + polylineLength(pathSoFar).toFixed(0) + ' miles</p>',
+            content: '<h3>Route so far</h3><p>Total distance: ' + lengthSoFar.toFixed(0) + ' miles</p>',
             pixelOffset: new google.maps.Size(0, 2)
           });
 
