@@ -33,22 +33,6 @@
           zoom: 4
         });
 
-        <% unless latest_check_in.nil? %>
-          // Create a marker and set its position.
-          var marker = new google.maps.Marker({
-            map: map,
-            position: myLatLng
-          });
-
-          var infowindow = new google.maps.InfoWindow({
-            content: '<div id="content"><p><strong>Last check-in:</strong> <%= latest_check_in.sent_at.localtime.strftime('%F %l:%M %P') %></p></div>'
-          });
-
-          marker.addListener('click', function() {
-            infowindow.open(map, marker);
-          });
-        <% end %>
-
         // Create a polyline of the path so far.
         var paths = <%= path_so_far.to_json %>
         var lengthSoFar = 0
@@ -65,26 +49,23 @@
           pathSoFar.setMap(map);
 
           lengthSoFar += polylineLength(pathSoFar)
-
-          // Add an infoWindow to the path
-          var pathInfoWindow = new google.maps.InfoWindow({
-            content: '<h3>Route so far</h3><p>Total distance: ' + lengthSoFar.toFixed(0) + ' miles</p>',
-            pixelOffset: new google.maps.Size(0, 2)
-          });
-
-          pathSoFar.infoWindow = pathInfoWindow;
-
-          // Infowindow-opening event handler
-          google.maps.event.addListener(pathSoFar, 'click', function(e) {
-            pathSoFar.infoWindow.close();
-            if (e && e.latLng) {
-              pathSoFar.infoWindow.setPosition(e.latLng);
-            } else {
-              pathSoFar.infoWindow.setPosition(point);
-            }
-            pathSoFar.infoWindow.open(pathSoFar.map || pathSoFar.polylines[0].map);
-          });
         }
+
+        <% unless latest_check_in.nil? %>
+          // Create a marker and set its position.
+          var marker = new google.maps.Marker({
+            map: map,
+            position: myLatLng
+          });
+
+          var infowindow = new google.maps.InfoWindow({
+            content: '<div id="content"><p><strong>Last check-in:</strong> <%= latest_check_in.sent_at.localtime.strftime('%l:%M%P on %F') %></p><p><strong>Distance covered:</strong> ' + lengthSoFar.toFixed(0) + ' miles</p></div>'
+          });
+
+          marker.addListener('click', function() {
+            infowindow.open(map, marker);
+          });
+        <% end %>
 
         function polylineLength(polyline) {
           var meters = google.maps.geometry.spherical.computeLength(polyline.getPath());
