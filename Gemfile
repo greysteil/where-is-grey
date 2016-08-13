@@ -12,6 +12,7 @@ gem 'prius', '~> 1.0'           # Environment variable management
 gem 'rake', '~> 11.0'           # Task manager
 
 gem 'spot-gps', '~> 0.2.3'      # Client library for SPOT GPS tracker
+gem 'exifr', '~> 1.2.5'         # Read image metadata, including GPS details
 
 group :development, :test do
   gem 'pry'                     # Debugging console

@@ -2,12 +2,13 @@ require 'sinatra'
 require "sinatra/activerecord"
 require_relative 'models/application_record'
 require_relative 'models/check_in'
+require_relative 'models/photo'
 
 require 'prius'
 require 'spot'
-require 'dotenv' if development?
+require 'dotenv' if development? || test?
 
-Dotenv.load if development?
+Dotenv.load if development? || test?
 Prius.load(:google_public_api_key)
 
 class WhereIsGrey < Sinatra::Base
@@ -39,22 +40,22 @@ class WhereIsGrey < Sinatra::Base
 
   def path_so_far
     paths = []
-    path = []
+    current_path = []
+
     CheckIn.order(sent_at: :asc).each do |check_in|
-      coord = {
+      current_path << {
         lat: check_in.latitude.to_f,
         lng: check_in.longitude.to_f
       }
-      path << coord
 
       if check_in.last_before_discontinuity?
-        paths << path
-        path = []
+        paths << current_path
+        current_path = []
       end
     end
 
-    unless CheckIn.order(sent_at: :asc).last.last_before_discontinuity?
-      paths << path
+    unless CheckIn.order(sent_at: :asc).last&.last_before_discontinuity?
+      paths << current_path
     end
 
     paths

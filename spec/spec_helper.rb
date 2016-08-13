@@ -6,6 +6,7 @@ require "dotenv"
 require "database_cleaner"
 require "factory_girl"
 require_relative "factories/check_in"
+require_relative "factories/photo"
 
 Dotenv.load(File.expand_path("../../dummy-env", __FILE__))
 

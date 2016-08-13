@@ -79,6 +79,39 @@ ALTER SEQUENCE check_ins_id_seq OWNED BY check_ins.id;
 
 
 --
+-- Name: photos; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE photos (
+    id integer NOT NULL,
+    latitude numeric(16,6) NOT NULL,
+    longitude numeric(16,6) NOT NULL,
+    url character varying NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: photos_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE photos_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: photos_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE photos_id_seq OWNED BY photos.id;
+
+
+--
 -- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -92,6 +125,13 @@ CREATE TABLE schema_migrations (
 --
 
 ALTER TABLE ONLY check_ins ALTER COLUMN id SET DEFAULT nextval('check_ins_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY photos ALTER COLUMN id SET DEFAULT nextval('photos_id_seq'::regclass);
 
 
 --
@@ -111,6 +151,14 @@ ALTER TABLE ONLY check_ins
 
 
 --
+-- Name: photos_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY photos
+    ADD CONSTRAINT photos_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: schema_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -126,11 +174,18 @@ CREATE UNIQUE INDEX index_check_ins_on_spot_id ON check_ins USING btree (spot_id
 
 
 --
+-- Name: index_photos_on_url; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_photos_on_url ON photos USING btree (url);
+
+
+--
 -- PostgreSQL database dump complete
 --
 
 SET search_path TO "$user",public;
 
-INSERT INTO schema_migrations (version) VALUES ('20160730230824'), ('20160801202023');
+INSERT INTO schema_migrations (version) VALUES ('20160730230824'), ('20160801202023'), ('20160813223024');
 
 
