@@ -40,7 +40,8 @@ def s3_bucket
   storage = Fog::Storage.new(fog_options)
 
   storage.directories.get(Prius.get(:aws_photo_bucket)) ||
-    storage.directories.create(key: Prius.get(:aws_photo_bucket))
+    storage.directories.create(key: Prius.get(:aws_photo_bucket),
+                               location: "us-west-2")
 end
 
 def fog_options
