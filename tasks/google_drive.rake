@@ -46,7 +46,7 @@ end
 def fog_options
   if ENV['RACK_ENV'].nil? || ENV['RACK_ENV'].to_sym == :development
     { provider: "Local",
-      local_root: File.expand_path("../app/static", __FILE__),
+      local_root: File.expand_path("../../app/static", __FILE__),
       endpoint: "http://localhost:9393" }
   else
     { provider: "AWS",
@@ -70,8 +70,7 @@ namespace :google_drive do
       content = drive.get_file(photo.id, download_dest: StringIO.new)
       content.rewind
       exif_details = EXIFR::JPEG.new(content)
-
-      # TODO: end loop early if file already on S3
+      content.rewind
 
       filename =
         "photos/#{Digest::MD5.hexdigest(photo.name)}.#{photo.file_extension}"
@@ -84,6 +83,8 @@ namespace :google_drive do
         content_type: photo.mime_type
       )
 
+      # TODO: end loop earlier if file already on S3. Should be able to base on
+      # name, so we don't need to download from S3
       next if Photo.exists?(url: file.public_url)
 
       Photo.create(
