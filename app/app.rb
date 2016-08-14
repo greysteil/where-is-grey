@@ -24,7 +24,8 @@ class WhereIsGrey < Sinatra::Base
         locals: {
           api_key: google_public_api_key,
           latest_check_in: latest_check_in,
-          path_so_far: path_so_far
+          path_so_far: path_so_far,
+          photos: photos
         }
   end
 
@@ -59,5 +60,15 @@ class WhereIsGrey < Sinatra::Base
     end
 
     paths
+  end
+
+  def photos
+    Photo.all.map do |photo|
+      {
+        lat: photo.latitude.to_f,
+        lng: photo.longitude.to_f,
+        url: photo.url
+      }
+    end
   end
 end

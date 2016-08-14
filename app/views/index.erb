@@ -51,6 +51,26 @@
           lengthSoFar += polylineLength(pathSoFar)
         }
 
+        // Create a marker (and info window) for each photo.
+        var photos = <%= photos.to_json %>
+        for (var i = 0; i < photos.length; i++) {
+          var photoMarker = new google.maps.Marker({
+            map: map,
+            position: {
+              lat: photos[i].lat,
+              lng: photos[i].lng
+            }
+          });
+
+          var photoInfowindow = new google.maps.InfoWindow({
+            content: '<div id="content"><a href="' + photos[i].url + '">View photo</a></div>'
+          });
+
+          photoMarker.addListener('click', function() {
+            photoInfowindow.open(map, photoMarker);
+          });
+        }
+
         <% unless latest_check_in.nil? %>
           // Create a marker and set its position.
           var marker = new google.maps.Marker({
