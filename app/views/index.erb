@@ -56,6 +56,8 @@
         var photos = <%= photos.to_json %>
         var photoIcon = {
           url: 'images/camera-icon.png',
+          size: new google.maps.Size(20, 20),
+          anchor: new google.maps.Point(10, 10)
         };
 
         for (var i = 0; i < photos.length; i++) {
