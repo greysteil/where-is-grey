@@ -1,4 +1,12 @@
 export GOOGLE_PUBLIC_API_KEY="API_KEY"
+
+export GOOGLE_ACCOUNT_TYPE="authorized_user"
+export GOOGLE_CLIENT_ID=""
+export GOOGLE_CLIENT_SECRET=""
+export GOOGLE_REFRESH_TOKEN=""
+export GOOGLE_DRIVE_FOLDER_ID="FOLDER_ID"
+
 export SPOT_FEED_ID="FEED_ID"
 export SPOT_FEED_PASSWORD=""
+
 export PING_URL="http://example.com"
