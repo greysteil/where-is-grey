@@ -14,12 +14,15 @@ gem 'rake', '~> 11.0'                # Task manager
 gem 'spot-gps', '~> 0.2.3'           # Client library for SPOT GPS tracker
 gem 'exifr', '~> 1.2.5'              # Read image metadata, including GPS data
 gem 'google-api-client', '~> 0.9.0'  # Pull images from Google Drive
+gem 'fog-aws', '~> 0.9.4'            # Push images up to S3
 
 group :development, :test do
   gem 'pry'                          # Debugging console
 
   gem 'dotenv', require: false       # Local environment variables
   gem 'shotgun'                      # Auto-reloading web server
+
+  gem 'fog-local', '~> 0.3.0'        # Local file storage for Fog
 end
 
 group :test do
