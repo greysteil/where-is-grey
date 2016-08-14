@@ -2,10 +2,10 @@ require 'prius'
 require 'google/apis/drive_v3'
 require 'exifr'
 require 'fog/aws'
-require 'fog/local'
 require_relative "../app/app"
 
 if ENV['RACK_ENV'].nil? || ENV['RACK_ENV'].to_sym == :development
+  require 'fog/local'
   require 'dotenv'
   Dotenv.load
 end
