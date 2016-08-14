@@ -58,7 +58,7 @@
           url: 'images/camera-icon.png',
         };
 
-        for (var i = 0; i < photos.length; i++) (function(i) {
+        for (var i = 0; i < photos.length; i++) {
           var photoMarker = new google.maps.Marker({
             map: map,
             position: {
@@ -68,14 +68,8 @@
             icon: photoIcon
           });
 
-          var photoInfowindow = new google.maps.InfoWindow({
-            content: '<div id="content"><img src="' + photos[i].url + '" width=200px></div>'
-          });
-
-          photoMarker.addListener('click', function() {
-            photoInfowindow.open(map, photoMarker);
-          });
-        })(i)
+          attachPhotoToMarker(photoMarker, photos[i]);
+        }
 
         <% unless latest_check_in.nil? %>
           // Create a marker and set its position.
@@ -96,6 +90,16 @@
         function polylineLength(polyline) {
           var meters = google.maps.geometry.spherical.computeLength(polyline.getPath());
           return meters * 0.000621371
+        }
+
+        function attachPhotoToMarker(marker, photo) {
+          var photoInfowindow = new google.maps.InfoWindow({
+            content: '<div id="content"><img src="' + photo.url + '" width=200px></div>'
+          });
+
+          marker.addListener('click', function() {
+            photoInfowindow.open(map, marker);
+          });
         }
 
         // Parse the route KML and display it on the map
