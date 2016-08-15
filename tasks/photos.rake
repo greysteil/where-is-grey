@@ -43,20 +43,24 @@ namespace :photos do
       tempfile.rewind
 
       exif_details = EXIFR::JPEG.new(tempfile)
+
       image = MiniMagick::Image.new(tempfile.path).auto_orient
-      thumbnail = MiniMagick::Image.open(image.path).resize("200x200")
+      image_body = File.read(image.path)
+
+      thumbnail = image.resize("200x200")
+      thumbnail_body = File.read(thumbnail.path)
 
       filename = "photos/#{photo.id}"
 
       s3_file = s3_bucket.files.create(
         key: filename + ".jpeg",
-        body: File.read(image.path),
+        body: image_body,
         public: true,
         content_type: photo.mime_type
       )
       s3_bucket.files.create(
         key: filename + "_t.jpeg",
-        body: File.read(thumbnail.path),
+        body: thumbnail_body,
         public: true,
         content_type: photo.mime_type
       )
