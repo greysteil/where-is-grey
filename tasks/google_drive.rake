@@ -63,7 +63,8 @@ namespace :google_drive do
   task :fetch_latest_photos do
     photos =
       drive.list_files(
-        q: "'#{Prius.get(:google_drive_folder_id)}' in parents",
+        q: "'#{Prius.get(:google_drive_folder_id)}' in parents " \
+           "AND trashed = false",
         fields: 'files(id, name, mime_type)'
       ).files
 
