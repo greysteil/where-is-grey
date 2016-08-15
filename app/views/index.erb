@@ -59,6 +59,7 @@
           size: new google.maps.Size(20, 20),
           anchor: new google.maps.Point(10, 10)
         };
+        var currentPhotoInfowindow = null;
 
         for (var i = 0; i < photos.length; i++) {
           var photoMarker = new google.maps.Marker({
@@ -100,7 +101,13 @@
           });
 
           marker.addListener('click', function() {
+            if (currentPhotoInfowindow) {
+              currentPhotoInfowindow.close();
+            }
+
             photoInfowindow.open(map, marker);
+
+            currentPhotoInfowindow = photoInfowindow
           });
         }
 
