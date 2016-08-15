@@ -25,39 +25,6 @@ Prius.load(:aws_photo_bucket)
 Prius.load(:aws_access_key_id)
 Prius.load(:aws_secret_access_key)
 
-def drive
-  @drive_client ||=
-    begin
-      client = Google::Apis::DriveV3::DriveService.new
-
-      # TODO: Move to constructing auth explicitly
-      client.authorization = Google::Auth.get_application_default
-
-      client
-    end
-end
-
-def s3_bucket
-  storage = Fog::Storage.new(fog_options)
-
-  storage.directories.get(Prius.get(:aws_photo_bucket)) ||
-    storage.directories.create(key: Prius.get(:aws_photo_bucket),
-                               location: "us-west-2")
-end
-
-def fog_options
-  if ENV['RACK_ENV'].nil? || ENV['RACK_ENV'].to_sym == :development
-    { provider: "Local",
-      local_root: File.expand_path("../../app/static", __FILE__),
-      endpoint: "http://localhost:9393" }
-  else
-    { provider: "AWS",
-      aws_access_key_id: Prius.get(:aws_access_key_id),
-      aws_secret_access_key: Prius.get(:aws_secret_access_key),
-      region: "us-west-2" }
-  end
-end
-
 namespace :photos do
   desc 'Pull latest photos from Google Drive'
   task :fetch_latest do
@@ -107,5 +74,42 @@ namespace :photos do
   desc 'Delete all photos from app (so they can be re-synched from Drive)'
   task :delete_all do
     Photo.all.each(&:destroy!)
+  end
+end
+
+##################
+# Helper methods #
+##################
+
+def drive
+  @drive_client ||=
+    begin
+      client = Google::Apis::DriveV3::DriveService.new
+
+      # TODO: Move to constructing auth explicitly
+      client.authorization = Google::Auth.get_application_default
+
+      client
+    end
+end
+
+def s3_bucket
+  storage = Fog::Storage.new(fog_options)
+
+  storage.directories.get(Prius.get(:aws_photo_bucket)) ||
+    storage.directories.create(key: Prius.get(:aws_photo_bucket),
+                               location: "us-west-2")
+end
+
+def fog_options
+  if ENV['RACK_ENV'].nil? || ENV['RACK_ENV'].to_sym == :development
+    { provider: "Local",
+      local_root: File.expand_path("../../app/static", __FILE__),
+      endpoint: "http://localhost:9393" }
+  else
+    { provider: "AWS",
+      aws_access_key_id: Prius.get(:aws_access_key_id),
+      aws_secret_access_key: Prius.get(:aws_secret_access_key),
+      region: "us-west-2" }
   end
 end
