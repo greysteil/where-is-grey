@@ -5,7 +5,7 @@ import 'tasks/dyno_ping.rake'
 import 'tasks/spot.rake'
 
 # Fetch photos from Google Drive
-import 'tasks/google_drive.rake'
+import 'tasks/photos.rake'
 
 # ActiveRecord database tasks
 import 'tasks/active_record.rake'

@@ -58,9 +58,9 @@ def fog_options
   end
 end
 
-namespace :google_drive do
+namespace :photos do
   desc 'Pull latest photos from Google Drive'
-  task :fetch_latest_photos do
+  task :fetch_latest do
     photos =
       drive.list_files(
         q: "'#{Prius.get(:google_drive_folder_id)}' in parents " \
@@ -95,5 +95,10 @@ namespace :google_drive do
         description: photo.name
       )
     end
+  end
+
+  desc 'Delete all photos from app (so they can be re-synched from Drive)'
+  task :delete_all do
+    Photo.all.each(&:destroy!)
   end
 end
