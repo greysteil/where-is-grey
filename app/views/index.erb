@@ -54,11 +54,11 @@
           lengthSoFar += polylineLength(pathSoFar)
         }
 
-        /////////////////////////////////////////////
-        // Add a "last check in" marker to the map //
-        /////////////////////////////////////////////
+        ///////////////////////////////////////////////
+        // Add a "latest check in" marker to the map //
+        ///////////////////////////////////////////////
         <% unless latest_check_in.nil? %>
-          var lastCheckInMarker = new google.maps.Marker({
+          var latestCheckInMarker = new google.maps.Marker({
             map: map,
             position: myLatLng
           });
@@ -67,8 +67,8 @@
             content: '<div id="content"><p><strong>Last check-in:</strong> <%= latest_check_in.sent_at.localtime.strftime('%l:%M%P on %F') %></p><p><strong>Distance covered:</strong> ' + lengthSoFar.toFixed(0) + ' miles</p></div>'
           });
 
-          lastCheckInMarker.addListener('click', function() {
-            infowindow.open(map, lastCheckInMarker);
+          latestCheckInMarker.addListener('click', function() {
+            infowindow.open(map, latestCheckInMarker);
           });
         <% end %>
 
@@ -77,9 +77,9 @@
         ///////////////////////////
         var photos = <%= photos.to_json %>
         var photoIcon = {
-          url: 'images/camera-icon.png',
-          size: new google.maps.Size(20, 20),
-          anchor: new google.maps.Point(10, 10)
+          url: 'images/camera-icon-12.png',
+          size: new google.maps.Size(12, 12),
+          anchor: new google.maps.Point(6, 6)
         };
         var currentPhotoInfowindow = null;
 
@@ -93,7 +93,7 @@
             icon: photoIcon
           });
 
-          attachPhotoToMarker(photoMarker, photos[i]);
+          attachPhotoToMarker(photoMarker, i);
         }
 
         //////////////////////////////////
@@ -118,9 +118,10 @@
           return meters * 0.000621371
         }
 
-        function attachPhotoToMarker(marker, photo) {
+        function attachPhotoToMarker(marker, photo_index) {
           var photoInfowindow = new google.maps.InfoWindow({
-            content: '<div id="content"><img src="' + photo.url + '" width=200px><p>' + photo.description +'</p></div>'
+            content: '<div id="content"><p>' + photos[photo_index].description +'</p></div>',
+            maxWidth: 200
           });
 
           marker.addListener('click', function() {
@@ -128,6 +129,7 @@
               currentPhotoInfowindow.close();
             }
 
+            photoInfowindow.setContent('<div id="content"><img src="' + photos[photo_index].url + '" width=100%><p>' + photos[photo_index].description +'</p></div>')
             photoInfowindow.open(map, marker);
 
             currentPhotoInfowindow = photoInfowindow
