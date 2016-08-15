@@ -129,7 +129,7 @@
               currentPhotoInfowindow.close();
             }
 
-            photoInfowindow.setContent('<div id="content"><img src="' + photos[photo_index].url + '" width=100%><p>' + photos[photo_index].description +'</p></div>')
+            photoInfowindow.setContent('<div id="content"><a href="' + photos[photo_index].url + '"><img src="' + photos[photo_index].thumb + '" width=100%></a><p>' + photos[photo_index].description +'</p></div>')
             photoInfowindow.open(map, marker);
 
             currentPhotoInfowindow = photoInfowindow
