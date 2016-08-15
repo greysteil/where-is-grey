@@ -19,21 +19,23 @@
     <div id="map"></div>
     <script src="javascript/geoxml3.js"></script>
     <script>
-      var map;
-
       function initMap() {
+        ///////////////////////////////
+        // Create and center the map //
+        ///////////////////////////////
         var myLatLng = {
           lat: <%= latest_check_in&.latitude || 51.56853 %>,
           lng: <%= latest_check_in&.longitude || 0.01077 %>
         };
 
-        // Create a map object and specify the DOM element for display.
         map = new google.maps.Map(document.getElementById('map'), {
           center: myLatLng,
           zoom: 4
         });
 
-        // Create a polyline of the path so far.
+        ////////////////////////////////////////////////////////
+        // Add path so far to the map, and calculate distance //
+        ////////////////////////////////////////////////////////
         var paths = <%= path_so_far.to_json %>
         var lengthSoFar = 0
 
@@ -52,7 +54,27 @@
           lengthSoFar += polylineLength(pathSoFar)
         }
 
-        // Create a marker (and info window) for each photo.
+        /////////////////////////////////////////////
+        // Add a "last check in" marker to the map //
+        /////////////////////////////////////////////
+        <% unless latest_check_in.nil? %>
+          var lastCheckInMarker = new google.maps.Marker({
+            map: map,
+            position: myLatLng
+          });
+
+          var infowindow = new google.maps.InfoWindow({
+            content: '<div id="content"><p><strong>Last check-in:</strong> <%= latest_check_in.sent_at.localtime.strftime('%l:%M%P on %F') %></p><p><strong>Distance covered:</strong> ' + lengthSoFar.toFixed(0) + ' miles</p></div>'
+          });
+
+          lastCheckInMarker.addListener('click', function() {
+            infowindow.open(map, lastCheckInMarker);
+          });
+        <% end %>
+
+        ///////////////////////////
+        // Add photos to the map //
+        ///////////////////////////
         var photos = <%= photos.to_json %>
         var photoIcon = {
           url: 'images/camera-icon.png',
@@ -74,21 +96,22 @@
           attachPhotoToMarker(photoMarker, photos[i]);
         }
 
-        <% unless latest_check_in.nil? %>
-          // Create a marker and set its position.
-          var marker = new google.maps.Marker({
-            map: map,
-            position: myLatLng
-          });
+        //////////////////////////////////
+        // Add planned route to the map //
+        //////////////////////////////////
+        var kmlParser = new geoXML3.parser({
+          map: map,
+          singleInfoWindow: true,
+          zoom: false,
+          afterParse: function (docSet) {
+            for (var i = 0; i < docSet[0].gpolylines.length; i++) {
+              var poly = docSet[0].gpolylines[i];
+              poly.infoWindowOptions.content += '<p>' + polylineLength(poly).toFixed(0) + ' miles</p>';
+            }
+          }
+        });
 
-          var infowindow = new google.maps.InfoWindow({
-            content: '<div id="content"><p><strong>Last check-in:</strong> <%= latest_check_in.sent_at.localtime.strftime('%l:%M%P on %F') %></p><p><strong>Distance covered:</strong> ' + lengthSoFar.toFixed(0) + ' miles</p></div>'
-          });
-
-          marker.addListener('click', function() {
-            infowindow.open(map, marker);
-          });
-        <% end %>
+        kmlParser.parse('/route.kml')
 
         function polylineLength(polyline) {
           var meters = google.maps.geometry.spherical.computeLength(polyline.getPath());
@@ -110,21 +133,6 @@
             currentPhotoInfowindow = photoInfowindow
           });
         }
-
-        // Parse the route KML and display it on the map
-        var kmlParser = new geoXML3.parser({
-          map: map,
-          singleInfoWindow: true,
-          zoom: false,
-          afterParse: function (docSet) {
-            for (var i = 0; i < docSet[0].gpolylines.length; i++) {
-              var poly = docSet[0].gpolylines[i];
-              poly.infoWindowOptions.content += '<p>' + polylineLength(poly).toFixed(0) + ' miles</p>';
-            }
-          }
-        });
-
-        kmlParser.parse('/route.kml')
       }
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=<%= api_key %>&callback=initMap&libraries=geometry"
