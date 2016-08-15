@@ -64,35 +64,34 @@ namespace :google_drive do
     photos =
       drive.list_files(
         q: "'#{Prius.get(:google_drive_folder_id)}' in parents",
-        fields: 'files(id, name, file_extension, mime_type)'
+        fields: 'files(id, name, mime_type)'
       ).files
 
     # Download each photo, process its EXIF data, and upload it to S3
     photos.each do |photo|
+      next if Photo.exists?(external_id: photo.id)
+
       tempfile = drive.get_file(photo.id, download_dest: Tempfile.new)
       tempfile.rewind
 
       exif_details = EXIFR::JPEG.new(tempfile)
       image = MiniMagick::Image.new(tempfile.path).auto_orient
 
-      filename =
-        "photos/#{Digest::MD5.hexdigest(photo.name)}.#{photo.file_extension}"
+      filename = "photos/#{photo.id}.jpeg"
 
-      file = s3_bucket.files.create(
+      s3_file = s3_bucket.files.create(
         key: filename,
         body: File.read(image.path),
         public: true,
         content_type: photo.mime_type
       )
 
-      # TODO: end loop earlier if file already on S3. Should be able to base on
-      # name, so we don't need to download from S3
-      next if Photo.exists?(url: file.public_url)
-
       Photo.create(
         latitude: exif_details.gps.latitude,
         longitude: exif_details.gps.longitude,
-        url: file.public_url
+        url: s3_file.public_url,
+        external_id: photo.id,
+        description: photo.name
       )
     end
   end

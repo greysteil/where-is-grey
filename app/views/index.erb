@@ -96,7 +96,7 @@
 
         function attachPhotoToMarker(marker, photo) {
           var photoInfowindow = new google.maps.InfoWindow({
-            content: '<div id="content"><img src="' + photo.url + '" width=200px></div>'
+            content: '<div id="content"><img src="' + photo.url + '" width=200px><p>' + photo.description +'</p></div>'
           });
 
           marker.addListener('click', function() {
