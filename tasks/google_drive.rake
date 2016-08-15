@@ -2,6 +2,7 @@ require 'prius'
 require 'google/apis/drive_v3'
 require 'exifr'
 require 'fog/aws'
+require 'mini_magick'
 require_relative "../app/app"
 
 if ENV['RACK_ENV'].nil? || ENV['RACK_ENV'].to_sym == :development
@@ -68,18 +69,18 @@ namespace :google_drive do
 
     # Download each photo, process its EXIF data, and upload it to S3
     photos.each do |photo|
-      content = drive.get_file(photo.id, download_dest: StringIO.new)
-      content.rewind
-      exif_details = EXIFR::JPEG.new(content)
-      content.rewind
+      tempfile = drive.get_file(photo.id, download_dest: Tempfile.new)
+      tempfile.rewind
+
+      exif_details = EXIFR::JPEG.new(tempfile)
+      image = MiniMagick::Image.new(tempfile.path).auto_orient
 
       filename =
         "photos/#{Digest::MD5.hexdigest(photo.name)}.#{photo.file_extension}"
-      body = content
 
       file = s3_bucket.files.create(
         key: filename,
-        body: body,
+        body: File.read(image.path),
         public: true,
         content_type: photo.mime_type
       )
