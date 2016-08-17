@@ -69,7 +69,8 @@ class WhereIsGrey < Sinatra::Base
         lng: photo.longitude.to_f,
         url: photo.url,
         thumb: photo.thumbnail_url,
-        description: photo.description
+        description: photo.description,
+        taken_at: photo.taken_at.to_date
       }
     end
   end
