@@ -19,4 +19,14 @@ RSpec.describe Photo, type: :model do
     before { photo.url = nil }
     it { is_expected.to_not be_valid }
   end
+
+  context "without a taken_at" do
+    before { photo.taken_at = nil }
+    it { is_expected.to_not be_valid }
+  end
+
+  context "without an external_id" do
+    before { photo.external_id = nil }
+    it { is_expected.to_not be_valid }
+  end
 end

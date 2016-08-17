@@ -70,7 +70,8 @@ namespace :photos do
         longitude: exif_details.gps.longitude,
         url: s3_file.public_url,
         external_id: photo.id,
-        description: photo.name
+        description: photo.name,
+        taken_at: exif_details.date_time_original
       )
     end
   end

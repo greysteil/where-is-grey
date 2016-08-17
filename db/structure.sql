@@ -90,7 +90,8 @@ CREATE TABLE photos (
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     description text,
-    external_id character varying NOT NULL
+    external_id character varying NOT NULL,
+    taken_at timestamp without time zone NOT NULL
 );
 
 
@@ -176,18 +177,11 @@ CREATE UNIQUE INDEX index_check_ins_on_spot_id ON check_ins USING btree (spot_id
 
 
 --
--- Name: index_photos_on_url; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE UNIQUE INDEX index_photos_on_url ON photos USING btree (url);
-
-
---
 -- PostgreSQL database dump complete
 --
 
 SET search_path TO "$user",public;
 
-INSERT INTO schema_migrations (version) VALUES ('20160730230824'), ('20160801202023'), ('20160813223024'), ('20160815104540');
+INSERT INTO schema_migrations (version) VALUES ('20160730230824'), ('20160801202023'), ('20160813223024'), ('20160815104540'), ('20160817183705');
 
 
