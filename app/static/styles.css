@@ -1,0 +1,176 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.map {
+  height: 300px;
+  flex: 1;
+}
+
+.stats {
+  display: flex;
+  flex-direction: column;
+  padding-top: 20px;
+}
+
+.stat {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  text-align: center;
+}
+
+.stat-heading {
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 500;
+  color: #B4B4B4;
+  margin-bottom: 10px;
+}
+
+.stat-body {
+  font-weight: 900;
+  font-size: 60px;
+  color: #464646;
+  margin-bottom: 10px;
+}
+
+.stat-footer {
+  font-weight: 400;
+  text-transform: uppercase;
+  font-size: 12px;
+  color: #444444;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #eee;
+}
+
+.stat-unit {
+  font-size: 16px;
+}
+
+.fun-fact {
+  text-transform: uppercase;
+  font-size: 12px;
+  color: #444444;
+  text-align: center;
+  padding: 0px 20px 20px 20px;
+}
+
+.photo-update {
+  text-align: left;
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.photo-update__details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 0 20px;
+}
+
+.photo-update__title {
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 500;
+  color: #444444;
+  padding-top: 20px;
+}
+
+.photo-update__photo {
+  flex: 1;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+.photo-update__caption {
+  font-size: 14px;
+  color: #444444;
+  padding-top: 10px;
+  font-weight: 300;
+  font-style: italic;
+  padding-bottom: 40px;
+}
+
+.photo-update {
+  flex-direction: column-reverse;
+  text-align: center;
+}
+
+.photo-update__title {
+}
+
+.photo-update__caption {
+  padding-bottom: 40px;
+}
+
+.progress-bar {
+  height: 40px;
+  background-color: #87b1e2;
+}
+
+.progress-bar-inner {
+  height: 40px;
+}
+
+.progress-bar-inner-inner {
+  animation: w100 2s ease forwards;
+  animation-delay: 2s;
+  background-color: #4a90e2;
+  position: relative;
+  height: 40px;
+  width: 0%;
+}
+
+.progress-bar-cyclist {
+  height: 35px;
+  position: absolute;
+  right: -17px;
+  bottom: 0;
+}
+
+/* Anything > 400px wide gets a landscape view */
+@media screen and (min-width: 980px) {
+  .stats {
+    flex-direction: row;
+    padding-top: 60px;
+    align-items: stretch;
+    align-content: stretch;
+    justify-content: space-around;
+  }
+
+  .stat-heading {
+    margin-bottom: 20px;
+  }
+
+  .stat-body {
+    margin-bottom: 20px;
+  }
+
+  .stat-footer {
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+    border-bottom: none;
+  }
+
+  .fun-fact {
+    padding: 40px 0px;
+  }
+}
+
+@keyframes w100 {
+  from { width: 0%; }
+  to { width: 100%; }
+};
+

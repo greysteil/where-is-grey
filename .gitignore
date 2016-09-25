@@ -1,3 +1,4 @@
 .bundle
 .env
 app/static/where-is-grey/*
+app/public/app.js

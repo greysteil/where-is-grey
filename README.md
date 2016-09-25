@@ -17,13 +17,16 @@ A simple app to plot my progress around the world
 
 - Postgres database
 - Sinatra backend
+- Webpack/ES6 frontend
 
 To run locally:
 
 ```bash
 bundle install
+npm install
 bundle exec rake db:seed
-bundle exec shotgun
+bundle exec shotgun (watches and rebuilds backend)
+npm start (watches and rebuilds front end)
 ```
 
 ## Potential improvements

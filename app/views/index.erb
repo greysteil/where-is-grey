@@ -4,140 +4,27 @@
     <title>Where is Grey?</title>
     <meta name="viewport" content="initial-scale=1.0">
     <meta charset="utf-8">
-    <style>
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-      #map {
-        height: 100%;
-      }
-    </style>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet"/>
   </head>
   <body>
-    <div id="map"></div>
-    <script src="javascript/geoxml3.js"></script>
-    <script>
-      function initMap() {
-        ///////////////////////////////
-        // Create and center the map //
-        ///////////////////////////////
-        var myLatLng = {
-          lat: <%= latest_check_in&.latitude || 51.56853 %>,
-          lng: <%= latest_check_in&.longitude || 0.01077 %>
-        };
+    <!-- Hack to ensure cyclist svg is loaded early -->
+    <img src="/cyclist.svg" style="display: none">
 
-        map = new google.maps.Map(document.getElementById('map'), {
-          center: myLatLng,
-          zoom: 4
-        });
+    <div id="app"></div>
 
-        ////////////////////////////////////////////////////////
-        // Add path so far to the map, and calculate distance //
-        ////////////////////////////////////////////////////////
-        var paths = <%= path_so_far.to_json %>
-        var lengthSoFar = 0
-
-        for (var i = 0; i < paths.length; i++) {
-          var pathSoFar = new google.maps.Polyline({
-            path: paths[i],
-            geodesic: true,
-            strokeColor: '#FF0000',
-            strokeOpacity: 0.45,
-            strokeWeight: 3,
-            clickable: false
-          });
-
-          pathSoFar.setMap(map);
-
-          lengthSoFar += polylineLength(pathSoFar)
-        }
-
-        ///////////////////////////////////////////////
-        // Add a "latest check in" marker to the map //
-        ///////////////////////////////////////////////
-        <% unless latest_check_in.nil? %>
-          var latestCheckInMarker = new google.maps.Marker({
-            map: map,
-            position: myLatLng
-          });
-
-          var infowindow = new google.maps.InfoWindow({
-            content: '<div id="content"><p><strong>Last check-in:</strong> <%= latest_check_in.sent_at.localtime.strftime('%l:%M%P on %F') %></p><p><strong>Distance covered:</strong> ' + lengthSoFar.toFixed(0) + ' miles</p></div>'
-          });
-
-          latestCheckInMarker.addListener('click', function() {
-            infowindow.open(map, latestCheckInMarker);
-          });
-        <% end %>
-
-        ///////////////////////////
-        // Add photos to the map //
-        ///////////////////////////
-        var photos = <%= photos.to_json %>
-        var photoIcon = {
-          url: 'images/camera-icon-12.png',
-          size: new google.maps.Size(12, 12),
-          anchor: new google.maps.Point(6, 6)
-        };
-        var currentPhotoInfowindow = null;
-
-        for (var i = 0; i < photos.length; i++) {
-          var photoMarker = new google.maps.Marker({
-            map: map,
-            position: {
-              lat: photos[i].lat,
-              lng: photos[i].lng
-            },
-            icon: photoIcon
-          });
-
-          attachPhotoToMarker(photoMarker, i);
-        }
-
-        //////////////////////////////////
-        // Add planned route to the map //
-        //////////////////////////////////
-        var kmlParser = new geoXML3.parser({
-          map: map,
-          singleInfoWindow: true,
-          zoom: false,
-          afterParse: function (docSet) {
-            for (var i = 0; i < docSet[0].gpolylines.length; i++) {
-              var poly = docSet[0].gpolylines[i];
-              poly.infoWindowOptions.content += '<p>' + polylineLength(poly).toFixed(0) + ' miles</p>';
-            }
-          }
-        });
-
-        kmlParser.parse('/route.kml')
-
-        function polylineLength(polyline) {
-          var meters = google.maps.geometry.spherical.computeLength(polyline.getPath());
-          return meters * 0.000621371
-        }
-
-        function attachPhotoToMarker(marker, photo_index) {
-          var photoInfowindow = new google.maps.InfoWindow({
-            content: '<div id="content"><h4>' + photos[photo_index].taken_at + '</h4><p>' + photos[photo_index].description +'</p></div>',
-            maxWidth: 200
-          });
-
-          marker.addListener('click', function() {
-            if (currentPhotoInfowindow) {
-              currentPhotoInfowindow.close();
-            }
-
-            photoInfowindow.setContent('<div id="content"><h4>' + photos[photo_index].taken_at + '</h4><a href="' + photos[photo_index].url + '"><img src="' + photos[photo_index].thumb + '" width=100%></a><p>' + photos[photo_index].description +'</p></div>')
-            photoInfowindow.open(map, marker);
-
-            currentPhotoInfowindow = photoInfowindow
-          });
-        }
+    <script src="https://maps.googleapis.com/maps/api/js?key=<%= api_key %>&libraries=geometry"></script>
+    <script type="text/javascript">
+      // Define variables for use in the app
+      window.appData = {
+        latestCheckin: <%= latest_check_in.to_json %>,
+        paths: <%= paths.to_json %>,
+        photos: <%= photos.to_json %>,
+        daysOnTheRoad: <%= days_on_the_road.to_json %>,
+        google: google,
       }
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=<%= api_key %>&callback=initMap&libraries=geometry"
-    async defer></script>
+    <script type="text/javascript" src="/geoxml3.js"></script>
+    <script type="text/javascript" src="/app.js"></script>
   </body>
 </html>
