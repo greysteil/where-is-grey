@@ -70,11 +70,11 @@ export const App = React.createClass({
     return (
       <div className="container">
         <div className="stats">
-          <DistanceDone distance={this.state.distanceTravelled} daysOnTheRoad={this.state.daysOnTheRoad} />
+          <DistanceDone distance={this.state.distanceTravelled} hoursOnTheRoad={this.state.hoursOnTheRoad} />
           <CheckinLocation country={this.state.country} time={moment(this.state.latestCheckin.sent_at)} />
           <DistanceRemaining distance={this.state.distanceRemaining} nextSection={this.state.nextJourneySection.name} />
         </div>
-        <FunFact distance={this.state.distanceTravelled} daysOnTheRoad={this.state.daysOnTheRoad} />
+        <FunFact distance={this.state.distanceTravelled} hoursOnTheRoad={this.state.hoursOnTheRoad} />
         <ProgressBar distanceTravelled={this.state.distanceTravelled} distanceTotal={this.state.distanceTotal} />
         <GoogleMap
           google={this.state.google}

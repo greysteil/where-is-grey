@@ -35,7 +35,7 @@ export const FunFact = React.createClass({
   getInitialState: function () {
     const fact = this.randomComparison()(
       this.props.distance,
-      this.props.daysOnTheRoad
+      this.props.hoursOnTheRoad
     );
 
     return { fact: fact };

@@ -24,7 +24,7 @@ class WhereIsGrey < Sinatra::Base
         locals: {
           api_key: google_public_api_key,
           latest_check_in: latest_check_in,
-          days_on_the_road: days_on_the_road,
+          hours_on_the_road: hours_on_the_road,
           paths: path_so_far,
           photos: photos
         }
@@ -36,8 +36,8 @@ class WhereIsGrey < Sinatra::Base
     Prius.get(:google_public_api_key)
   end
 
-  def days_on_the_road
-    ((latest_check_in.sent_at - first_check_in.sent_at) / 86400).round
+  def hours_on_the_road
+    ((latest_check_in.sent_at - first_check_in.sent_at) / 3600).ceil
   end
 
   def checkins
