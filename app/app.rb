@@ -14,7 +14,7 @@ Prius.load(:google_public_api_key)
 class WhereIsGrey < Sinatra::Base
   register Sinatra::ActiveRecordExtension
 
-  set :public_folder, Proc.new { File.join(root, "static") }
+  set :public_folder, Proc.new { File.join(root, "public") }
   set :static, true
   set :static_cache_control, [:public, max_age: 300]
   set :database_file, File.expand_path("../../config/database.yml", __FILE__)
@@ -24,7 +24,8 @@ class WhereIsGrey < Sinatra::Base
         locals: {
           api_key: google_public_api_key,
           latest_check_in: latest_check_in,
-          path_so_far: path_so_far,
+          hours_on_the_road: hours_on_the_road,
+          paths: path_so_far,
           photos: photos
         }
   end
@@ -35,15 +36,27 @@ class WhereIsGrey < Sinatra::Base
     Prius.get(:google_public_api_key)
   end
 
+  def hours_on_the_road
+    ((latest_check_in.sent_at - first_check_in.sent_at) / 3600).ceil
+  end
+
+  def checkins
+    CheckIn.order(sent_at: :asc)
+  end
+
   def latest_check_in
-    CheckIn.order(sent_at: :asc).last
+    CheckIn.order(sent_at: :desc).first
+  end
+
+  def first_check_in
+    checkins.first
   end
 
   def path_so_far
     paths = []
     current_path = []
 
-    CheckIn.order(sent_at: :asc).each do |check_in|
+    checkins.each do |check_in|
       current_path << {
         lat: check_in.latitude.to_f,
         lng: check_in.longitude.to_f
@@ -55,7 +68,7 @@ class WhereIsGrey < Sinatra::Base
       end
     end
 
-    unless CheckIn.order(sent_at: :asc).last&.last_before_discontinuity?
+    unless latest_check_in&.last_before_discontinuity?
       paths << current_path
     end
 
