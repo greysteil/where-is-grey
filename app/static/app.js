@@ -80,6 +80,7 @@ export const App = React.createClass({
         <div className="mapc">
           <GoogleMap
             google={this.state.google}
+            plannedPaths={this.state.plannedPaths}
             paths={this.state.paths}
             photos={this.state.photos}
             latestCheckinTime={moment(this.state.latestCheckin.sent_at)}

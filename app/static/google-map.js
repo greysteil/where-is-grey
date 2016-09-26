@@ -42,6 +42,20 @@ export const GoogleMap = React.createClass({
 
       const map = new maps.Map(node, mapConfig);
 
+      // Add planned route to map
+      for (var i = 0; i < this.props.plannedPaths.length; i++) {
+        const pathSoFar = new google.maps.Polyline({
+          path: this.props.plannedPaths[i].path,
+          geodesic: true,
+          strokeColor: '#0000FF',
+          strokeOpacity: 0.6,
+          strokeWeight: 3,
+          clickable: false
+        });
+
+        pathSoFar.setMap(map);
+      }
+
       // Add actual route to map
       for (var i = 0; i < this.props.paths.length; i++) {
         const pathSoFar = new google.maps.Polyline({
