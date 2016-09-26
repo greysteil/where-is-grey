@@ -41,11 +41,11 @@ class WhereIsGrey < Sinatra::Base
   end
 
   def checkins
-    @checkins ||= CheckIn.order(sent_at: :asc).all
+    CheckIn.order(sent_at: :asc)
   end
 
   def latest_check_in
-    checkins.last
+    CheckIn.order(sent_at: :desc).first
   end
 
   def first_check_in
