@@ -2,3 +2,4 @@
 .env
 app/static/where-is-grey/*
 app/public/app.js
+node_modules/*
