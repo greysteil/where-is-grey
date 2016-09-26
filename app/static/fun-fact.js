@@ -5,23 +5,23 @@ export const FunFact = React.createClass({
   randomComparison: function () {
     const comparisons = [
       // Height of empire state building
-      (km, days) => {
+      (km, hours) => {
         let height = 0.443;
         let multiplier = Math.round(km / height);
         return `Grey has now travelled ${multiplier.toLocaleString()} times the height of the empire state building`
       },
 
       // Circumference of the moon
-      (km, days) => {
+      (km, hours) => {
         const circumference = 10921;
         let multiplier = Math.round(km * 10 / circumference) / 10;
         return `Grey has now covered ${multiplier.toLocaleString()} times the circumference of the moon`
       },
 
       // Mars bars (calories)
-      (km, days) => {
+      (km, hours) => {
         const caloriesPerDay = 6000; // estimated...
-        const totalCalories = caloriesPerDay * days;
+        const totalCalories = caloriesPerDay * (hours / 24);
         const caloriesInMarsBar = 260;
 
         let multiplier = Math.round(totalCalories / caloriesInMarsBar);
