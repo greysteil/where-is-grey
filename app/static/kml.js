@@ -1,4 +1,4 @@
-// KmlLoader.load returns a promise which resolves to and array containing all
+// KmlLoader.load returns a promise which resolves to an array containing all
 // the trip sections
 export const KmlLoader = {
   load: (path) => {
