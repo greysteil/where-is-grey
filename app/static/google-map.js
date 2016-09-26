@@ -62,11 +62,48 @@ export const GoogleMap = React.createClass({
         position: currentLatLng,
       });
 
+      var infowindow = new google.maps.InfoWindow({
+        content: '<div id="content"><p><strong>Last check-in:</strong>' + this.props.latestCheckinTime.format() + '<p><strong>Distance covered:</strong> ' + Math.round(this.props.distanceTravelled) + ' km</p></div>'
+      });
+
+      latestCheckInMarker.addListener('click', function() {
+        infowindow.open(map, latestCheckInMarker);
+      });
+
       // Add photo markers
       var photoIcon = {
-        url: 'images/camera-icon-12.png',
-        size: new google.maps.Size(12, 12),
-        anchor: new google.maps.Point(6, 6)
+        url: '/images/camera-icon.png',
+        size: new google.maps.Size(20, 20),
+        //anchor: new google.maps.Point(10, 10)
+      };
+
+      photoIcon = {
+        //url: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
+
+        url: 'http://localhost:9393/images/camera-icon@2x.png',
+        size: new google.maps.Size(32, 32),
+        scaledSize: new google.maps.Size(32, 32),
+        anchor: new google.maps.Point(16, 16)
+      };
+
+      // TODO: Keep this in state
+      let currentPhotoInfowindow;
+      const attachPhotoToMarker = (marker, photoData) => {
+        var photoInfowindow = new google.maps.InfoWindow({
+          content: '<div id="content"><h4>' + photoData.taken_at + '</h4><p>' + photoData.description +'</p></div>',
+          maxWidth: 200
+        });
+
+        marker.addListener('click', function() {
+          if (currentPhotoInfowindow) {
+            currentPhotoInfowindow.close();
+          }
+
+          photoInfowindow.setContent('<div id="content"><h4>' + photoData.taken_at + '</h4><a href="' + photoData.url + '"><img src="' + photoData.thumb + '" width=100%></a><p>' + photoData.description +'</p></div>')
+          photoInfowindow.open(map, marker);
+
+          currentPhotoInfowindow = photoInfowindow
+        });
       };
 
       const photos = this.props.photos;
@@ -80,14 +117,7 @@ export const GoogleMap = React.createClass({
           icon: photoIcon
         });
 
-        // <3 Javascript
-        const photoHandler = ((photoData) => {
-          return () => {
-            this.props.photoHandler(photoData);
-          }
-        })(photos[i]);
-
-        photoMarker.addListener('click', photoHandler)
+        attachPhotoToMarker(photoMarker, photos[i]);
       }
     }
   },

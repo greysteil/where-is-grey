@@ -16,7 +16,6 @@ import {DistanceRemaining} from './distance-remaining';
 import {FunFact} from './fun-fact';
 import {ProgressBar} from './progress-bar';
 import {GoogleMap} from './google-map';
-import {PhotoUpdate} from './photo-update';
 
 export const App = React.createClass({
   componentDidMount: function() {
@@ -69,22 +68,26 @@ export const App = React.createClass({
   render: function() {
     return (
       <div className="container">
-        <div className="stats">
-          <DistanceDone distance={this.state.distanceTravelled} hoursOnTheRoad={this.state.hoursOnTheRoad} />
-          <CheckinLocation country={this.state.country} time={moment(this.state.latestCheckin.sent_at)} />
-          <DistanceRemaining distance={this.state.distanceRemaining} nextSection={this.state.nextJourneySection.name} />
+        <div className="statc">
+          <div className="stats">
+            <DistanceDone distance={this.state.distanceTravelled} hoursOnTheRoad={this.state.hoursOnTheRoad} />
+            <CheckinLocation country={this.state.country} time={moment(this.state.latestCheckin.sent_at)} />
+            <DistanceRemaining distance={this.state.distanceRemaining} nextSection={this.state.nextJourneySection.name} />
+          </div>
+          <FunFact distance={this.state.distanceTravelled} hoursOnTheRoad={this.state.hoursOnTheRoad} />
+          <ProgressBar distanceTravelled={this.state.distanceTravelled} distanceTotal={this.state.distanceTotal} />
         </div>
-        <FunFact distance={this.state.distanceTravelled} hoursOnTheRoad={this.state.hoursOnTheRoad} />
-        <ProgressBar distanceTravelled={this.state.distanceTravelled} distanceTotal={this.state.distanceTotal} />
-        <GoogleMap
-          google={this.state.google}
-          paths={this.state.paths}
-          photos={this.state.photos}
-          photoHandler={(photoData) => this.setState({photoData: photoData})}
-          lat={this.state.currentLat}
-          lng={this.state.currentLng}
-          zoom={8}/>
-        <PhotoUpdate data={this.state.photoData}/>
+        <div className="mapc">
+          <GoogleMap
+            google={this.state.google}
+            paths={this.state.paths}
+            photos={this.state.photos}
+            latestCheckinTime={moment(this.state.latestCheckin.sent_at)}
+            distanceTravelled={this.state.distanceTravelled}
+            lat={this.state.currentLat}
+            lng={this.state.currentLng}
+            zoom={8}/>
+        </div>
       </div>
     )
   }
