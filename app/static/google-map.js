@@ -85,16 +85,10 @@ export const GoogleMap = React.createClass({
       });
 
       // Add photo markers
-      var photoIcon = {
-        url: '/images/camera-icon.png',
-        size: new google.maps.Size(20, 20),
-        //anchor: new google.maps.Point(10, 10)
-      };
-
-      photoIcon = {
+      const photoIcon = {
         //url: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
 
-        url: 'http://localhost:9393/images/camera-icon@2x.png',
+        url: '/images/camera-icon@2x.png',
         size: new google.maps.Size(32, 32),
         scaledSize: new google.maps.Size(32, 32),
         anchor: new google.maps.Point(16, 16)
