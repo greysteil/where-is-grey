@@ -1,3 +1,5 @@
+import 'whatwg-fetch';
+
 // Given an array of paths, return the total length in km
 export const pathsLength = (paths) => {
   let currLength = 0;
