@@ -87,7 +87,7 @@ export const App = React.createClass({
             distanceTravelled={this.state.distanceTravelled}
             lat={this.state.currentLat}
             lng={this.state.currentLng}
-            zoom={8}/>
+            zoom={6}/>
         </div>
       </div>
     )
