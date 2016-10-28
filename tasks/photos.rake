@@ -39,10 +39,17 @@ namespace :photos do
     photos.each do |photo|
       next if Photo.exists?(external_id: photo.id)
 
+      puts "Importing photo #{photo.inspect}"
+
       tempfile = drive.get_file(photo.id, download_dest: Tempfile.new)
       tempfile.rewind
 
       exif_details = EXIFR::JPEG.new(tempfile)
+
+      unless exif_details.gps
+        puts "No GPS data, skipping"
+        next
+      end
 
       image = MiniMagick::Image.new(tempfile.path).auto_orient
       image_body = File.read(image.path)
