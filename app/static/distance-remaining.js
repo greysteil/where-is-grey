@@ -9,7 +9,7 @@ export const DistanceRemaining = React.createClass({
           <span className="stat-value">{Math.round(this.props.distance).toLocaleString()}</span>
           <span className="stat-unit">km</span>
         </div>
-        <div className="stat-footer">next up: <span dangerouslySetInnerHTML={{__html: this.props.nextSection}}></span></div>
+        <div className="stat-footer">next up: <span dangerouslySetInnerHTML={{__html: "London"}}></span></div>
       </div>
     );
   }
