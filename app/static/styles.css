@@ -133,6 +133,13 @@ html, body {
   padding-bottom: 40px;
 }
 
+.progress-bar-container {
+  padding-right: 40px;
+  background: url("/flag.png");
+  background-repeat: repeat-x;
+  background-size: contain;
+}
+
 .progress-bar {
   height: 40px;
   background-color: #87b1e2;
@@ -156,6 +163,38 @@ html, body {
   position: absolute;
   right: -17px;
   bottom: 0;
+}
+
+.progress-bar-grey {
+  height: 75px;
+  position: absolute;
+  right: -30px;
+  bottom: 0px;
+}
+
+.progress-bar-peloton {
+  height: 20px;
+  width: 32px;
+  bottom: 0;
+  right: 140px;
+  position: absolute;
+  background: #ff0000;
+  -webkit-mask-box-image: url(/cyclist.svg);
+}
+
+.progress-bar-peloton-emoji {
+  height: 43px;
+  width: 32px;
+  bottom: 0;
+  right: 140px;
+  position: absolute;
+  font-size: 40px;
+  -moz-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+  -o-transform: scaleX(-1);
+  transform: scaleX(-1);
+  -ms-filter: fliph; /*IE*/
+  filter: fliph; /*IE*/
 }
 
 /* Anything > 400px wide gets a landscape view */
