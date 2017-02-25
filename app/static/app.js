@@ -40,7 +40,15 @@ export const App = React.createClass({
     });
 
     const distanceTravelled = pathsLength(convertedPaths);
-    const distanceRemaining = calculateRemainingDistance(allJourneySections, lat, lng);
+    //const distanceRemaining = calculateRemainingDistance(allJourneySections, lat, lng);
+    const calculateDistanceToLondon = (lat, lng) => {
+      const grey = new google.maps.LatLng({ lat, lng });
+      const london = new google.maps.LatLng({ lat: 51.555345, lng: 0.0170173 });
+
+      return (google.maps.geometry.spherical.computeDistanceBetween(grey, london) / 1000).toFixed(2);
+    }
+
+    const distanceRemaining = calculateDistanceToLondon(lat, lng);
 
     // There isn't a "total distance" measure, so let's just use distance
     // travelled + estimated distance to go!
