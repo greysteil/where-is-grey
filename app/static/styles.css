@@ -166,10 +166,10 @@ html, body {
 }
 
 .progress-bar-grey {
-  height: 75px;
+  height: 60px;
   position: absolute;
-  right: -30px;
-  bottom: 0px;
+  right: -27px;
+  bottom: -2px;
 }
 
 .progress-bar-peloton {
