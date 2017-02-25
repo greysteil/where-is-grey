@@ -27,7 +27,7 @@ export const CheckinLocation = React.createClass({
     return (
       <div className="stat">
         <div className="stat-heading">{this.state.locationDescription}</div>
-        <div className="stat-body">🎉 🎉 {location} 🎉 🎉</div>
+        <div className="stat-body">🎉 {location} 🎉</div>
         <div className="stat-footer">last checked in {timeAgo}</div>
       </div>
     );
