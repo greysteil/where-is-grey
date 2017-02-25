@@ -22,7 +22,7 @@ export const ProgressBar = React.createClass({
   render: function() {
     let peloton = [];
 
-    const numRiders = Math.round(Math.random() * 7) + 5
+    const numRiders = Math.round(Math.random() * 5) + 8
     for(let i = 0; i < numRiders; i++) {
       const offset = Math.round(Math.random()*200)
       const colors = [
