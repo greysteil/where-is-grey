@@ -4,7 +4,9 @@ import React from 'react';
 const PelotonCyclist = React.createClass({
   render: function() {
     const {color, offset} = this.props;
-    return <div className="progress-bar-peloton-emoji" style={{right: 17 + offset}}>🚴</div>;
+    return <div className="progress-bar-peloton-emoji" style={{right: 17 + offset}}>
+      { Math.random() > 0.5 ? "🚴" : "🚴‍♀️" }
+    </div>;
     // return <div className="progress-bar-peloton" style={{backgroundColor: color, right: 17 + offset}}></div>;
   }
 });
