@@ -114,19 +114,19 @@ export const GoogleMap = React.createClass({
         });
       };
 
-      // const photos = this.props.photos;
-      // for (var i = 0; i < photos.length; i++) {
-      //   var photoMarker = new google.maps.Marker({
-      //     map: map,
-      //     position: {
-      //       lat: photos[i].lat,
-      //       lng: photos[i].lng
-      //     },
-      //     icon: photoIcon
-      //   });
+      const photos = this.props.photos;
+      for (var i = 0; i < photos.length; i++) {
+        var photoMarker = new google.maps.Marker({
+          map: map,
+          position: {
+            lat: photos[i].lat,
+            lng: photos[i].lng
+          },
+          icon: photoIcon
+        });
 
-      //   attachPhotoToMarker(photoMarker, photos[i]);
-      // }
+        attachPhotoToMarker(photoMarker, photos[i]);
+      }
     }
   },
 
