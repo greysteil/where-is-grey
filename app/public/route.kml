@@ -7,7 +7,7 @@
 			<styleUrl>#route-line</styleUrl>
 			<LineString>
 				<tessellate>1</tessellate>
-				<coordinates>-9.1845703,38.7369461,0.0 -8.5473633,39.487085,0.0</coordinates>
+				<coordinates>-9.1845703,38.7369461,0.0 -9.0845703,38.8369461,0.0</coordinates>
 			</LineString>
 		</Placemark>
 		<Style id='route-line'>
