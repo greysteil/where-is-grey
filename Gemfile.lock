@@ -21,7 +21,7 @@ GEM
       safe_yaml (~> 1.0.0)
     database_cleaner (1.5.3)
     diff-lcs (1.2.5)
-    dotenv (2.1.1)
+    dotenv (2.2.1)
     excon (0.51.0)
     exifr (1.2.5)
     factory_girl (4.7.0)
@@ -176,9 +176,6 @@ DEPENDENCIES
   sinatra-activerecord
   spot-gps (~> 0.2.3)
   webmock (~> 2.1.0)
-
-RUBY VERSION
-   ruby 2.3.1p112
 
 BUNDLED WITH
    1.14.3
