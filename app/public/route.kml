@@ -2,6 +2,14 @@
 <kml xmlns='http://www.opengis.net/kml/2.2'>
 	<Document>
 		<name>Planned route</name>
+		<Placemark>
+			<name>Lisbon -&gt; Paris</name>
+			<styleUrl>#route-line</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>-9.1845703,38.7369461,0.0 -8.5473633,39.487085,0.0</coordinates>
+			</LineString>
+		</Placemark>
 		<Style id='route-line'>
 			<LineStyle>
 				<color>64781E14</color>
