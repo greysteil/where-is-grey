@@ -37,6 +37,7 @@ class WhereIsGrey < Sinatra::Base
   end
 
   def hours_on_the_road
+    return if latest_check_in.nil?
     ((latest_check_in.sent_at - first_check_in.sent_at) / 3600).ceil
   end
 

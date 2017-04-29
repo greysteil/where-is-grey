@@ -16,7 +16,6 @@ RSpec.describe WhereIsGrey do
 
     context "with no recent check ins" do
       its(:status) { is_expected.to eq(200) }
-      its(:body) { is_expected.to include("51.56853") }
     end
   end
 end
