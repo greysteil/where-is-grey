@@ -8,6 +8,8 @@ require 'prius'
 require 'spot'
 require 'dotenv' if development? || test?
 
+puts Sinatra::Application.environment
+
 Dotenv.load if development? || test?
 Prius.load(:google_public_api_key)
 
