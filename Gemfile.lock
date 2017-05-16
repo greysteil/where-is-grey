@@ -12,7 +12,8 @@ GEM
       i18n (~> 0.7)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
-    addressable (2.4.0)
+    addressable (2.5.1)
+      public_suffix (~> 2.0, >= 2.0.2)
     arel (7.1.1)
     builder (3.2.3)
     coderay (1.1.1)
@@ -64,7 +65,7 @@ GEM
       multi_json (~> 1.11)
       os (~> 0.9)
       signet (~> 0.7)
-    hashdiff (0.3.0)
+    hashdiff (0.3.4)
     httpclient (2.8.1)
     hurley (0.2)
     i18n (0.8.1)
@@ -95,6 +96,7 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    public_suffix (2.0.5)
     puma (3.8.2)
     rack (1.6.4)
     rack-protection (1.5.3)
@@ -145,7 +147,7 @@ GEM
     tzinfo (1.2.3)
       thread_safe (~> 0.1)
     uber (0.0.15)
-    webmock (2.1.0)
+    webmock (3.0.1)
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
       hashdiff
@@ -175,7 +177,7 @@ DEPENDENCIES
   sinatra (= 1.4.7)
   sinatra-activerecord
   spot-gps (~> 0.2.3)
-  webmock (~> 2.1.0)
+  webmock (~> 3.0.1)
 
 RUBY VERSION
    ruby 2.3.1p112
