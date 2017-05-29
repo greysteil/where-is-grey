@@ -101,7 +101,7 @@ GEM
       rack
     rack-test (0.6.3)
       rack (>= 1.0)
-    rake (11.2.2)
+    rake (12.0.0)
     representable (2.3.0)
       uber (~> 0.0.7)
     retriable (2.1.0)
@@ -168,7 +168,7 @@ DEPENDENCIES
   pry
   puma
   rack-test
-  rake (~> 11.0)
+  rake (~> 12.0)
   rspec (~> 3.6)
   rspec-its
   shotgun
