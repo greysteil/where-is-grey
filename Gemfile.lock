@@ -84,6 +84,7 @@ GEM
     minitest (5.10.2)
     multi_json (1.12.1)
     multipart-post (2.0.0)
+    mustermann (1.0.0)
     nokogiri (1.6.8)
       mini_portile2 (~> 2.1.0)
       pkg-config (~> 1.1.7)
@@ -96,8 +97,8 @@ GEM
       method_source (~> 0.8.1)
       slop (~> 3.4)
     puma (3.9.1)
-    rack (1.6.8)
-    rack-protection (1.5.3)
+    rack (2.0.3)
+    rack-protection (2.0.0)
       rack
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -129,10 +130,11 @@ GEM
       faraday (~> 0.9)
       jwt (~> 1.5)
       multi_json (~> 1.10)
-    sinatra (1.4.8)
-      rack (~> 1.5)
-      rack-protection (~> 1.4)
-      tilt (>= 1.3, < 3)
+    sinatra (2.0.0)
+      mustermann (~> 1.0)
+      rack (~> 2.0)
+      rack-protection (= 2.0.0)
+      tilt (~> 2.0)
     sinatra-activerecord (2.0.13)
       activerecord (>= 3.2)
       sinatra (>= 1.0)
@@ -172,7 +174,7 @@ DEPENDENCIES
   rspec (~> 3.6)
   rspec-its
   shotgun
-  sinatra (= 1.4.8)
+  sinatra (= 2.0.0)
   sinatra-activerecord
   spot-gps (~> 0.2.3)
   webmock (~> 2.1.0)
