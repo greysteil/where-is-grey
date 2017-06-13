@@ -5,7 +5,7 @@ gem 'sinatra', '1.4.8'               # Web framework
 gem 'puma'                           # Web server
 
 gem 'activerecord', '5.1.1'          # Object-relational mapper
-gem 'pg', '~> 0.20.0'                # PostgreSQL gem
+gem 'pg', '~> 0.21.0'                # PostgreSQL gem
 gem 'sinatra-activerecord'           # Sinatra setup for AR
 
 gem 'prius', '~> 1.0'                # Environment variable management
