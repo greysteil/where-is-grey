@@ -137,7 +137,7 @@ GEM
       activerecord (>= 3.2)
       sinatra (>= 1.0)
     slop (3.6.0)
-    spot-gps (0.2.3)
+    spot-gps (0.2.5)
       faraday (>= 0.8.9, < 0.10)
     thor (0.19.1)
     thread_safe (0.3.6)
@@ -174,7 +174,7 @@ DEPENDENCIES
   shotgun
   sinatra (= 1.4.8)
   sinatra-activerecord
-  spot-gps (~> 0.2.3)
+  spot-gps (~> 0.2.5)
   webmock (~> 2.1.0)
 
 RUBY VERSION
