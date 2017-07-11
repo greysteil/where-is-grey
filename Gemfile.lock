@@ -102,8 +102,8 @@ GEM
     rack (2.0.3)
     rack-protection (2.0.0)
       rack
-    rack-test (0.6.3)
-      rack (>= 1.0)
+    rack-test (0.7.0)
+      rack (>= 1.0, < 3)
     rake (12.0.0)
     representable (2.3.0)
       uber (~> 0.0.7)
