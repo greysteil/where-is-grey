@@ -43,7 +43,7 @@ export const App = React.createClass({
     //const distanceRemaining = calculateRemainingDistance(allJourneySections, lat, lng);
     const calculateDistanceToLondon = (lat, lng) => {
       const grey = new google.maps.LatLng({ lat, lng });
-      const london = new google.maps.LatLng({ lat: 51.555345, lng: 0.0170173 });
+      const london = new google.maps.LatLng({ lat: 51.548918, lng: -0.069538 });
 
       return (google.maps.geometry.spherical.computeDistanceBetween(grey, london) / 1000).toFixed(2);
     }
