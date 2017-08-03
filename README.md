@@ -2,8 +2,6 @@
 
 A simple app to plot my progress around the world.
 
-[![CircleCI](https://circleci.com/gh/greysteil/where-is-grey/tree/master.svg?style=svg)](https://circleci.com/gh/greysteil/where-is-grey/tree/master)
-
 ## How it works
 
 - Route taken (so far) is built up from check-ins from my SPOT GPS tracker.
