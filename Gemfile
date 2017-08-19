@@ -8,7 +8,7 @@ gem 'activerecord', '5.1.3'          # Object-relational mapper
 gem 'pg', '~> 0.21.0'                # PostgreSQL gem
 gem 'sinatra-activerecord'           # Sinatra setup for AR
 
-gem 'prius', '~> 1.0'                # Environment variable management
+gem 'prius', '~> 2.0'                # Environment variable management
 gem 'rake', '~> 12.0'                # Task manager
 
 gem 'spot-gps', '~> 0.2.6'           # Client library for SPOT GPS tracker
