@@ -9,7 +9,7 @@ gem 'pg', '~> 0.21.0'                # PostgreSQL gem
 gem 'sinatra-activerecord'           # Sinatra setup for AR
 
 gem 'prius', '~> 2.0'                # Environment variable management
-gem 'rake', '~> 12.1'                # Task manager
+gem 'rake', '~> 12.2'                # Task manager
 
 gem 'spot-gps', '~> 0.2.6'           # Client library for SPOT GPS tracker
 gem 'exifr', '~> 1.3.2'              # Read image metadata, including GPS data
