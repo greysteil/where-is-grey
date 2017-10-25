@@ -34,7 +34,7 @@ group :test do
 
   gem 'webmock', '~> 3.1.0'          # Mocking API calls
 
-  gem 'factory_girl'                 # Quickly instantiate models
+  gem 'factory_bot'                  # Quickly instantiate models
 
   gem 'database_cleaner'             # Clean up database after each run
 end

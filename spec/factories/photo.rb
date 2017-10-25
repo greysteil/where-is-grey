@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :photo do
     latitude 61.54875
     longitude -3.0697

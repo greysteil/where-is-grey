@@ -1,7 +1,7 @@
 require_relative "../spec_helper"
 
 RSpec.describe CheckIn, type: :model do
-  subject(:check_in) { FactoryGirl.build(:check_in) }
+  subject(:check_in) { FactoryBot.build(:check_in) }
 
   it { is_expected.to be_valid }
 

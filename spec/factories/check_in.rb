@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :check_in do
     battery_state "good"
     message_type "OK"

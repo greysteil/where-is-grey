@@ -1,7 +1,7 @@
 require_relative "../spec_helper"
 
 RSpec.describe Photo, type: :model do
-  subject(:photo) { FactoryGirl.build(:photo) }
+  subject(:photo) { FactoryBot.build(:photo) }
 
   it { is_expected.to be_valid }
 

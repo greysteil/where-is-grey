@@ -25,7 +25,7 @@ end
 
 WebMock.disable_net_connect!
 
-FactoryGirl.allow_class_lookup = false
+FactoryBot.allow_class_lookup = false
 
 def app
   WhereIsGrey
