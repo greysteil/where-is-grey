@@ -24,7 +24,7 @@ group :development, :test do
   gem 'dotenv', require: false       # Local environment variables
   gem 'shotgun'                      # Auto-reloading web server
 
-  gem 'fog-local', '~> 0.4.0'        # Local file storage for Fog
+  gem 'fog-local', '~> 0.5.0'        # Local file storage for Fog
 end
 
 group :test do
