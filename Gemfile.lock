@@ -97,10 +97,10 @@ GEM
       method_source (~> 0.9.0)
     public_suffix (3.0.1)
     puma (3.11.2)
-    rack (2.0.3)
+    rack (2.0.4)
     rack-protection (2.0.0)
       rack
-    rack-test (0.8.2)
+    rack-test (0.8.3)
       rack (>= 1.0, < 3)
     rake (12.3.0)
     representable (2.3.0)
