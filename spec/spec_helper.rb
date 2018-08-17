@@ -4,7 +4,7 @@ require "rspec/its"
 require "webmock/rspec"
 require "dotenv"
 require "database_cleaner"
-require "factory_girl"
+require "factory_bot"
 require_relative "factories/check_in"
 require_relative "factories/photo"
 
