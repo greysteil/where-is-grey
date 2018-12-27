@@ -95,7 +95,7 @@ GEM
     pry (0.12.2)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
-    public_suffix (3.0.2)
+    public_suffix (3.0.3)
     puma (3.12.0)
     rack (2.0.6)
     rack-protection (2.0.5)
@@ -146,7 +146,7 @@ GEM
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
     uber (0.0.15)
-    webmock (3.4.2)
+    webmock (3.5.1)
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
       hashdiff
@@ -176,7 +176,7 @@ DEPENDENCIES
   sinatra (= 2.0.5)
   sinatra-activerecord
   spot-gps (~> 0.2.7)
-  webmock (~> 3.4.2)
+  webmock (~> 3.5.1)
 
 RUBY VERSION
    ruby 2.4.1p111
