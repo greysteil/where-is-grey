@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/ruby:2.4.1-node-browsers
+      - image: circleci/ruby:2.6.2-node-browsers
         environment:
           RACK_ENV: test
       - image: circleci/node:7.10
@@ -39,7 +39,7 @@ jobs:
             - ~/where-is-grey/node_modules
       - run:
           name: Installing latest postgresql-client
-          command: sudo apt-get update -qq && sudo apt-get install -y postgresql-client
+          command: sudo apt install -y postgresql-client || true
 
       #########################
       # Environment variables #
