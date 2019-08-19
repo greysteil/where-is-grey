@@ -1,4 +1,4 @@
-class CreateCheckInsTable < ActiveRecord::Migration
+class CreateCheckInsTable < ActiveRecord::Migration[5.0]
   def up
     create_table :check_ins do |t|
       t.string :message_type, null: false

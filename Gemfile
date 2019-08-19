@@ -1,12 +1,14 @@
 source 'https://rubygems.org'
 ruby '2.6.2'
 
-gem 'sinatra', '2.0.5'                 # Web framework
+gem 'sinatra', '2.0.5'               # Web framework
 gem 'puma'                           # Web server
 
-gem 'activerecord', '5.2.3'          # Object-relational mapper
+gem 'activerecord', '6.0.0'          # Object-relational mapper
 gem 'pg', '~> 1.1.4'                 # PostgreSQL gem
-gem 'sinatra-activerecord'           # Sinatra setup for AR
+gem 'sinatra-activerecord',
+    git: 'https://github.com/greysteil/sinatra-activerecord',
+    branch: 'support-rails-6'           # Sinatra setup for AR
 
 gem 'prius', '~> 2.0'                # Environment variable management
 gem 'rake', '~> 12.3'                # Task manager

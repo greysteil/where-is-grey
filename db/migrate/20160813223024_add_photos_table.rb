@@ -1,4 +1,4 @@
-class AddPhotosTable < ActiveRecord::Migration
+class AddPhotosTable < ActiveRecord::Migration[5.0]
   def up
     create_table :photos do |t|
       t.decimal :latitude, null: false, precision: 16, scale: 6
