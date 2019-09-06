@@ -1,12 +1,3 @@
-GIT
-  remote: https://github.com/greysteil/sinatra-activerecord
-  revision: 3ad5dd2dbe2c88389207cf85e73cade412dd1679
-  branch: support-rails-6
-  specs:
-    sinatra-activerecord (2.0.13)
-      activerecord (>= 3.2)
-      sinatra (>= 1.0)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -139,6 +130,9 @@ GEM
       rack (~> 2.0)
       rack-protection (= 2.0.7)
       tilt (~> 2.0)
+    sinatra-activerecord (2.0.14)
+      activerecord (>= 3.2)
+      sinatra (>= 1.0)
     spot-gps (0.2.7)
       faraday (>= 0.8.9, < 0.16)
     thread_safe (0.3.6)
@@ -175,7 +169,7 @@ DEPENDENCIES
   rspec-its
   shotgun
   sinatra (= 2.0.7)
-  sinatra-activerecord!
+  sinatra-activerecord (= 2.0.14)
   spot-gps (~> 0.2.7)
   webmock (~> 3.7.2)
 
