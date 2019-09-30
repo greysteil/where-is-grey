@@ -95,7 +95,7 @@ GEM
       rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
-    rake (12.3.3)
+    rake (13.0.0)
     representable (3.0.4)
       declarative (< 0.1.0)
       declarative-option (< 0.2.0)
@@ -164,7 +164,7 @@ DEPENDENCIES
   pry
   puma
   rack-test
-  rake (~> 12.3)
+  rake (~> 13.0)
   rspec (~> 3.8)
   rspec-its
   shotgun
