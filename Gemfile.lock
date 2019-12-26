@@ -82,7 +82,7 @@ GEM
     nokogiri (1.10.5)
       mini_portile2 (~> 2.4.0)
     os (1.0.1)
-    pg (1.1.4)
+    pg (1.2.0)
     prius (2.0.0)
     pry (0.12.2)
       coderay (~> 1.1.0)
@@ -159,7 +159,7 @@ DEPENDENCIES
   fog-local (~> 0.6.0)
   google-api-client (~> 0.36.2)
   mini_magick
-  pg (~> 1.1.4)
+  pg (~> 1.2.0)
   prius (~> 2.0)
   pry
   puma
