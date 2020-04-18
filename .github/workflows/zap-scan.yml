@@ -1,0 +1,17 @@
+on:
+  push: {}
+
+jobs:
+  zap_scan:
+    runs-on: ubuntu-latest
+    name: Scan website
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          ref: master
+      - name: ZAP Baseline Scan
+        uses: zaproxy/action-baseline@v0.2.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          target: 'http://whereis.greysteil.com/'
