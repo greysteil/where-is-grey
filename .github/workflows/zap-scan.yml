@@ -1,6 +1,5 @@
 on:
   push:
-  pull_request:
   schedule:
     # At 01:00.
     - cron:  '0 1 * * *'
@@ -10,6 +9,10 @@ jobs:
     runs-on: ubuntu-latest
     name: Scan website
     steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          ref: master
       - name: ZAP Baseline Scan
         uses: zaproxy/action-baseline@v0.2.0
         with:
