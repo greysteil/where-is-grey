@@ -17,4 +17,4 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           target: 'http://whereis.greysteil.com/'
-          rules_file_name: '.github/workflows/zap-scan-rules.tsv'
+          rules_file_name: '.github/workflows/zap-scan-rules.csv'
