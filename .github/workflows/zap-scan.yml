@@ -1,5 +1,6 @@
 on:
   push:
+  pull_request:
   schedule:
     # At 01:00.
     - cron:  '0 1 * * *'
