@@ -24,6 +24,9 @@ jobs:
       - restore_cache:
           key: v1-node-dependencies-{{ checksum "package.json" }}
       - run:
+          name: Installing Bundler
+          command: gem install bundler -v 1.17.3
+      - run:
           name: Installing Ruby dependencies
           command: bundle install --jobs=4 --retry=3 --path vendor/bundle
       - run:
