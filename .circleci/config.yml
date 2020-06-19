@@ -6,7 +6,7 @@ jobs:
         environment:
           RACK_ENV: test
       - image: circleci/node:7.10
-      - image: circleci/postgres:9.6.5
+      - image: circleci/postgres:12.3
         environment:
           POSTGRES_USER: circleci
           POSTGRES_DB: where-is-grey-test
@@ -42,7 +42,7 @@ jobs:
             - ~/where-is-grey/node_modules
       - run:
           name: Installing latest postgresql-client
-          command: sudo apt-get update && sudo apt install -y postgresql-client-9.6 || true
+          command: sudo apt-get update && sudo apt install -y postgresql-client-12.3 || true
 
       #########################
       # Environment variables #
