@@ -9,6 +9,7 @@ jobs:
       - image: circleci/postgres:12.3
         environment:
           POSTGRES_USER: circleci
+          POSTGRES_PASSWORD: password
           POSTGRES_DB: where-is-grey-test
 
     working_directory: ~/where-is-grey
@@ -58,7 +59,7 @@ jobs:
           name: Creating database
           command: bundle exec rake db:create db:structure:load
           environment:
-            DATABASE_URL: postgres://circleci:@127.0.0.1:5432/where-is-grey-test
+            DATABASE_URL: postgres://circleci:password@127.0.0.1:5432/where-is-grey-test
 
       #########
       # Tests #
