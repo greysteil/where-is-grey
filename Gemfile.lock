@@ -48,7 +48,7 @@ GEM
       fog-core
       nokogiri (>= 1.5.11, < 2.0.0)
     formatador (0.2.5)
-    google-api-client (0.41.2)
+    google-api-client (0.42.0)
       addressable (~> 2.5, >= 2.5.1)
       googleauth (~> 0.9)
       httpclient (>= 2.8.1, < 3.0)
@@ -75,7 +75,7 @@ GEM
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
     minitest (5.14.1)
-    multi_json (1.14.1)
+    multi_json (1.15.0)
     multipart-post (2.1.1)
     mustermann (1.1.1)
       ruby2_keywords (~> 0.0.1)
@@ -159,7 +159,7 @@ DEPENDENCIES
   factory_bot
   fog-aws (~> 0.9.4)
   fog-local (~> 0.6.0)
-  google-api-client (~> 0.41.2)
+  google-api-client (~> 0.42.0)
   mini_magick
   pg (~> 1.2.3)
   prius (~> 2.0)
