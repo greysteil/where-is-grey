@@ -142,7 +142,7 @@ GEM
     tzinfo (1.2.7)
       thread_safe (~> 0.1)
     uber (0.1.0)
-    webmock (3.9.2)
+    webmock (3.9.3)
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
       hashdiff (>= 0.4.0, < 2.0.0)
@@ -173,7 +173,7 @@ DEPENDENCIES
   sinatra (= 2.1.0)
   sinatra-activerecord (= 2.0.19)
   spot-gps (~> 0.2.9)
-  webmock (~> 3.9.2)
+  webmock (~> 3.9.3)
 
 RUBY VERSION
    ruby 2.7.1p83
