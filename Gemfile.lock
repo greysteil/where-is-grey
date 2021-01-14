@@ -17,7 +17,8 @@ GEM
     builder (3.2.3)
     coderay (1.1.2)
     concurrent-ruby (1.1.7)
-    crack (0.4.4)
+    crack (0.4.5)
+      rexml
     database_cleaner (1.8.5)
     declarative (0.0.20)
     declarative-option (0.1.0)
@@ -145,7 +146,7 @@ GEM
     tzinfo (1.2.7)
       thread_safe (~> 0.1)
     uber (0.1.0)
-    webmock (3.11.0)
+    webmock (3.11.1)
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
       hashdiff (>= 0.4.0, < 2.0.0)
@@ -176,7 +177,7 @@ DEPENDENCIES
   sinatra (= 2.1.0)
   sinatra-activerecord (= 2.0.21)
   spot-gps (~> 0.2.9)
-  webmock (~> 3.11.0)
+  webmock (~> 3.11.1)
 
 RUBY VERSION
    ruby 2.7.1p83
