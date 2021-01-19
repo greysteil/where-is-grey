@@ -67,7 +67,7 @@ GEM
       signet (~> 0.14)
     hashdiff (1.0.1)
     httpclient (2.8.3)
-    i18n (1.8.5)
+    i18n (1.8.7)
       concurrent-ruby (~> 1.0)
     ipaddress (0.8.3)
     jwt (2.2.2)
@@ -76,7 +76,7 @@ GEM
     mini_magick (4.11.0)
     mini_mime (1.0.2)
     mini_portile2 (2.5.0)
-    minitest (5.14.2)
+    minitest (5.14.3)
     multi_json (1.15.0)
     multipart-post (2.1.1)
     mustermann (1.1.1)
@@ -136,21 +136,21 @@ GEM
       rack (~> 2.2)
       rack-protection (= 2.1.0)
       tilt (~> 2.0)
-    sinatra-activerecord (2.0.21)
+    sinatra-activerecord (2.0.22)
       activerecord (>= 4.1)
       sinatra (>= 1.0)
     spot-gps (0.2.9)
       faraday (>= 0.8.9, < 2.0.0)
     thread_safe (0.3.6)
     tilt (2.0.10)
-    tzinfo (1.2.7)
+    tzinfo (1.2.9)
       thread_safe (~> 0.1)
     uber (0.1.0)
     webmock (3.11.1)
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
       hashdiff (>= 0.4.0, < 2.0.0)
-    zeitwerk (2.4.0)
+    zeitwerk (2.4.2)
 
 PLATFORMS
   ruby
@@ -175,7 +175,7 @@ DEPENDENCIES
   rspec-its
   shotgun
   sinatra (= 2.1.0)
-  sinatra-activerecord (= 2.0.21)
+  sinatra-activerecord (= 2.0.22)
   spot-gps (~> 0.2.9)
   webmock (~> 3.11.1)
 
