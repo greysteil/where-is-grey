@@ -19,7 +19,12 @@ GEM
     concurrent-ruby (1.1.7)
     crack (0.4.5)
       rexml
-    database_cleaner (1.8.5)
+    database_cleaner (2.0.0)
+      database_cleaner-active_record (~> 2.0.0)
+    database_cleaner-active_record (2.0.0)
+      activerecord (>= 5.a)
+      database_cleaner-core (~> 2.0.0)
+    database_cleaner-core (2.0.0)
     declarative (0.0.20)
     declarative-option (0.1.0)
     diff-lcs (1.4.4)
