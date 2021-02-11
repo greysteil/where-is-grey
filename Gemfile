@@ -4,7 +4,7 @@ ruby '2.7.1'
 gem 'sinatra', '2.1.0'               # Web framework
 gem 'puma'                           # Web server
 
-gem 'activerecord', '6.1.2'          # Object-relational mapper
+gem 'activerecord', '6.1.2.1'        # Object-relational mapper
 gem 'pg', '~> 1.2.3'                 # PostgreSQL gem
 gem 'sinatra-activerecord', '2.0.22' # Sinatra setup for AR
 
