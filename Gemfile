@@ -14,7 +14,7 @@ gem 'rake', '~> 13.0'                # Task manager
 gem 'spot-gps', '~> 0.2.9'           # Client library for SPOT GPS tracker
 gem 'exifr', '~> 1.3.9'              # Read image metadata, including GPS data
 gem 'google-api-client', '~> 0.53.0' # Pull images from Google Drive
-gem 'fog-aws', '~> 0.9.4'            # Push images up to S3
+gem 'fog-aws', '~> 2.0.1'            # Push images up to S3
 
 gem 'mini_magick'                    # Image manipulation (re-orienting for S3)
 
