@@ -142,7 +142,7 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.10.0)
     rspec-support (3.10.0)
-    ruby2_keywords (0.0.2)
+    ruby2_keywords (0.0.4)
     shotgun (0.9.2)
       rack (>= 1.0)
     signet (0.14.0)
@@ -155,7 +155,7 @@ GEM
       rack (~> 2.2)
       rack-protection (= 2.1.0)
       tilt (~> 2.0)
-    sinatra-activerecord (2.0.22)
+    sinatra-activerecord (2.0.23)
       activerecord (>= 4.1)
       sinatra (>= 1.0)
     spot-gps (0.2.9)
@@ -194,7 +194,7 @@ DEPENDENCIES
   rspec-its
   shotgun
   sinatra (= 2.1.0)
-  sinatra-activerecord (= 2.0.22)
+  sinatra-activerecord (= 2.0.23)
   spot-gps (~> 0.2.9)
   webmock (~> 3.12.2)
 
