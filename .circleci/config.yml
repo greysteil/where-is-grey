@@ -43,7 +43,7 @@ jobs:
             - ~/where-is-grey/node_modules
       - run:
           name: Installing latest postgresql-client
-          command: sudo apt-get update && sudo apt install -y postgresql-client || true
+          command: sudo apt update && sudo apt install -y postgresql-client
 
       #########################
       # Environment variables #
