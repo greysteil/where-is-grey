@@ -57,7 +57,7 @@ jobs:
       ############
       - run:
           name: Creating database
-          command: bundle exec rake db:create db:structure:load
+          command: bundle exec rake db:create db:schema:load
           environment:
             DATABASE_URL: postgres://circleci:password@127.0.0.1:5432/where-is-grey-test
 
