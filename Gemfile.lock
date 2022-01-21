@@ -29,7 +29,7 @@ GEM
     declarative-option (0.1.0)
     diff-lcs (1.4.4)
     dotenv (2.7.6)
-    excon (0.85.0)
+    excon (0.90.0)
     exifr (1.3.9)
     factory_bot (6.2.0)
       activesupport (>= 5.0.0)
@@ -50,7 +50,7 @@ GEM
     fog-json (1.2.0)
       fog-core
       multi_json (~> 1.10)
-    fog-local (0.7.0)
+    fog-local (0.8.0)
       fog-core (>= 1.27, < 3.0)
     fog-xml (0.1.3)
       fog-core
@@ -181,7 +181,7 @@ DEPENDENCIES
   exifr (~> 1.3.9)
   factory_bot
   fog-aws (~> 0.9.4)
-  fog-local (~> 0.7.0)
+  fog-local (~> 0.8.0)
   google-api-client (~> 0.53.0)
   mini_magick
   pg (~> 1.2.3)
