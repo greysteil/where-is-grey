@@ -114,7 +114,7 @@ GEM
       nio4r (~> 2.0)
     racc (1.6.0)
     rack (2.2.3)
-    rack-protection (2.1.0)
+    rack-protection (2.2.0)
       rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
@@ -149,10 +149,10 @@ GEM
       faraday (>= 0.17.3, < 2.0)
       jwt (>= 1.5, < 3.0)
       multi_json (~> 1.10)
-    sinatra (2.1.0)
+    sinatra (2.2.0)
       mustermann (~> 1.0)
       rack (~> 2.2)
-      rack-protection (= 2.1.0)
+      rack-protection (= 2.2.0)
       tilt (~> 2.0)
     sinatra-activerecord (2.0.25)
       activerecord (>= 4.1)
@@ -191,7 +191,7 @@ DEPENDENCIES
   rspec (~> 3.11)
   rspec-its
   shotgun
-  sinatra (= 2.1.0)
+  sinatra (= 2.2.0)
   sinatra-activerecord (= 2.0.25)
   spot-gps (~> 0.2.9)
   webmock (~> 3.14.0)
