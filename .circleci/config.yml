@@ -43,7 +43,9 @@ jobs:
             - ~/where-is-grey/node_modules
       - run:
           name: Installing latest postgresql-client
-          command: sudo apt update && sudo apt install -y postgresql-client
+          command: |
+            sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 4EB27DB2A3B88B8B
+            sudo apt-get update && sudo apt-get install -y postgresql-client
 
       #########################
       # Environment variables #
