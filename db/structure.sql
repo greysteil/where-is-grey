@@ -1,48 +1,41 @@
---
--- PostgreSQL database dump
---
-
--- Dumped from database version 9.6.2
--- Dumped by pg_dump version 9.6.2
-
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET idle_in_transaction_session_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
+SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
 
 --
--- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: -
+-- Name: timescaledb; Type: EXTENSION; Schema: -; Owner: -
 --
 
-CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+CREATE EXTENSION IF NOT EXISTS timescaledb WITH SCHEMA public;
 
 
 --
--- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: -
+-- Name: EXTENSION timescaledb; Type: COMMENT; Schema: -; Owner: -
 --
 
-COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+COMMENT ON EXTENSION timescaledb IS 'Enables scalable inserts and complex queries for time-series data';
 
-
-SET search_path = public, pg_catalog;
 
 SET default_tablespace = '';
 
-SET default_with_oids = false;
+SET default_table_access_method = heap;
 
 --
 -- Name: ar_internal_metadata; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE ar_internal_metadata (
+CREATE TABLE public.ar_internal_metadata (
     key character varying NOT NULL,
     value character varying,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
 );
 
 
@@ -50,7 +43,7 @@ CREATE TABLE ar_internal_metadata (
 -- Name: check_ins; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE check_ins (
+CREATE TABLE public.check_ins (
     id integer NOT NULL,
     message_type character varying NOT NULL,
     spot_id character varying NOT NULL,
@@ -68,7 +61,8 @@ CREATE TABLE check_ins (
 -- Name: check_ins_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE check_ins_id_seq
+CREATE SEQUENCE public.check_ins_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -80,14 +74,14 @@ CREATE SEQUENCE check_ins_id_seq
 -- Name: check_ins_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE check_ins_id_seq OWNED BY check_ins.id;
+ALTER SEQUENCE public.check_ins_id_seq OWNED BY public.check_ins.id;
 
 
 --
 -- Name: photos; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE photos (
+CREATE TABLE public.photos (
     id integer NOT NULL,
     latitude numeric(16,6) NOT NULL,
     longitude numeric(16,6) NOT NULL,
@@ -104,7 +98,8 @@ CREATE TABLE photos (
 -- Name: photos_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE photos_id_seq
+CREATE SEQUENCE public.photos_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -116,14 +111,14 @@ CREATE SEQUENCE photos_id_seq
 -- Name: photos_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE photos_id_seq OWNED BY photos.id;
+ALTER SEQUENCE public.photos_id_seq OWNED BY public.photos.id;
 
 
 --
 -- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE schema_migrations (
+CREATE TABLE public.schema_migrations (
     version character varying NOT NULL
 );
 
@@ -132,21 +127,21 @@ CREATE TABLE schema_migrations (
 -- Name: check_ins id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY check_ins ALTER COLUMN id SET DEFAULT nextval('check_ins_id_seq'::regclass);
+ALTER TABLE ONLY public.check_ins ALTER COLUMN id SET DEFAULT nextval('public.check_ins_id_seq'::regclass);
 
 
 --
 -- Name: photos id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY photos ALTER COLUMN id SET DEFAULT nextval('photos_id_seq'::regclass);
+ALTER TABLE ONLY public.photos ALTER COLUMN id SET DEFAULT nextval('public.photos_id_seq'::regclass);
 
 
 --
 -- Name: ar_internal_metadata ar_internal_metadata_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY ar_internal_metadata
+ALTER TABLE ONLY public.ar_internal_metadata
     ADD CONSTRAINT ar_internal_metadata_pkey PRIMARY KEY (key);
 
 
@@ -154,7 +149,7 @@ ALTER TABLE ONLY ar_internal_metadata
 -- Name: check_ins check_ins_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY check_ins
+ALTER TABLE ONLY public.check_ins
     ADD CONSTRAINT check_ins_pkey PRIMARY KEY (id);
 
 
@@ -162,7 +157,7 @@ ALTER TABLE ONLY check_ins
 -- Name: photos photos_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY photos
+ALTER TABLE ONLY public.photos
     ADD CONSTRAINT photos_pkey PRIMARY KEY (id);
 
 
@@ -170,7 +165,7 @@ ALTER TABLE ONLY photos
 -- Name: schema_migrations schema_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY schema_migrations
+ALTER TABLE ONLY public.schema_migrations
     ADD CONSTRAINT schema_migrations_pkey PRIMARY KEY (version);
 
 
@@ -178,14 +173,14 @@ ALTER TABLE ONLY schema_migrations
 -- Name: index_check_ins_on_spot_id; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE UNIQUE INDEX index_check_ins_on_spot_id ON check_ins USING btree (spot_id);
+CREATE UNIQUE INDEX index_check_ins_on_spot_id ON public.check_ins USING btree (spot_id);
 
 
 --
 -- Name: index_photos_on_url; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE UNIQUE INDEX index_photos_on_url ON photos USING btree (url);
+CREATE UNIQUE INDEX index_photos_on_url ON public.photos USING btree (url);
 
 
 --
@@ -194,6 +189,11 @@ CREATE UNIQUE INDEX index_photos_on_url ON photos USING btree (url);
 
 SET search_path TO "$user", public;
 
-INSERT INTO schema_migrations (version) VALUES ('20160730230824'), ('20160801202023'), ('20160813223024'), ('20160815104540'), ('20160817183705');
+INSERT INTO "schema_migrations" (version) VALUES
+('20160730230824'),
+('20160801202023'),
+('20160813223024'),
+('20160815104540'),
+('20160817183705');
 
 
