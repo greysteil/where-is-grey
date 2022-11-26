@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '3.0.2'
+ruby '3.1.2'
 
 gem 'sinatra', '3.0.2'               # Web framework
 gem 'puma'                           # Web server

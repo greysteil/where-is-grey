@@ -2,11 +2,11 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/ruby:3.0.2-node-browsers
+      - image: cimg/ruby:3.1-browsers
         environment:
           RACK_ENV: test
       - image: circleci/node:7.10
-      - image: circleci/postgres:13.5
+      - image: timescale/timescaledb-postgis:latest-pg13
         environment:
           POSTGRES_USER: circleci
           POSTGRES_PASSWORD: password
