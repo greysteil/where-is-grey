@@ -6,7 +6,7 @@ jobs:
         environment:
           RACK_ENV: test
       - image: circleci/node:7.10
-      - image: circleci/postgres:12.3
+      - image: circleci/postgres:13.5
         environment:
           POSTGRES_USER: circleci
           POSTGRES_PASSWORD: password
