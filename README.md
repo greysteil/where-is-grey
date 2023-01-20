@@ -15,6 +15,7 @@ A simple app to plot my progress around the world.
 
 ## Technical setup
 
+
 - Postgres database
 - Sinatra backend
 - Webpack/ES6 frontend
