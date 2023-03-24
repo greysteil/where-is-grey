@@ -24,7 +24,7 @@ To run locally:
 ```bash
 bundle install
 npm install
-bundle exec rake db:seed
+bundle exec rake db:create db:migrate db:seed
 bundle exec shotgun (watches and rebuilds backend)
 npm start (watches and rebuilds front end)
 ```
