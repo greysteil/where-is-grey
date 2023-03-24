@@ -1,6 +1,6 @@
 require "sinatra/activerecord/rake"
 
-ActiveRecord::Base.schema_format = :sql
+ActiveRecord.schema_format = :sql
 
 namespace :db do
   task :load_config do
