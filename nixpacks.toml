@@ -7,4 +7,4 @@ cmds = ['bundle install', 'npm install']
 cmds = ['npm run build']
 
 [start]
-cmd = 'bundle exec rackup config.ru'
+cmd = 'bundle exec rackup config.ru -p ${PORT:-3000}'
