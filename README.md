@@ -25,8 +25,8 @@ To run locally:
 bundle install
 npm install
 bundle exec rake db:create db:migrate db:seed
-bundle exec shotgun (watches and rebuilds backend)
-npm start (watches and rebuilds front end)
+bundle exec shotgun  # watches and rebuilds backend
+npm start            # watches and rebuilds front end
 ```
 
 ## Potential improvements
