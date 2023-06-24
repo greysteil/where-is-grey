@@ -1,0 +1,10 @@
+providers = ["ruby", "node"]
+
+[phases.install]
+cmds = ['bundle install', 'npm install']
+
+[phases.build]
+cmds = ['npm run build']
+
+[start]
+cmd = 'bundle exec rackup config.ru'
