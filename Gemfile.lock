@@ -163,14 +163,14 @@ GEM
       rack (~> 2.2, >= 2.2.4)
       rack-protection (= 3.1.0)
       tilt (~> 2.0)
-    sinatra-activerecord (2.0.26)
+    sinatra-activerecord (2.0.27)
       activerecord (>= 4.1)
       sinatra (>= 1.0)
     spot-gps (0.3.1)
       faraday (>= 2.0.0, < 3.0.0)
       faraday-net_http (>= 2.0.0, < 3.0.0)
     thor (1.2.1)
-    tilt (2.2.0)
+    tilt (2.3.0)
     timeout (0.4.0)
     trailblazer-option (0.1.2)
     tzinfo (2.0.6)
@@ -207,7 +207,7 @@ DEPENDENCIES
   rspec-its
   shotgun
   sinatra (= 3.1.0)
-  sinatra-activerecord (= 2.0.26)
+  sinatra-activerecord (= 2.0.27)
   spot-gps (~> 0.3.1)
   webmock (~> 3.19.1)
 
