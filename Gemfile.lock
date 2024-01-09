@@ -114,7 +114,7 @@ GEM
       racc (~> 1.4)
     os (1.1.4)
     pg (1.5.4)
-    prius (5.0.0)
+    prius (6.0.0)
     pry (0.14.2)
       coderay (~> 1.1)
       method_source (~> 1.0)
@@ -199,7 +199,7 @@ DEPENDENCIES
   google-api-client (~> 0.53.0)
   mini_magick
   pg (~> 1.5.4)
-  prius (~> 5.0)
+  prius (~> 6.0)
   pry
   puma
   rack-test
