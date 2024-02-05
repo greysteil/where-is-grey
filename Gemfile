@@ -29,7 +29,7 @@ group :development, :test do
 end
 
 group :test do
-  gem 'rspec', '~> 3.12'             # Testing framework
+  gem 'rspec', '~> 3.13'             # Testing framework
   gem 'rspec-its'                    # Allows `its(:method) { ... }`
   gem 'rack-test'                    # Testing Sinatra
 
