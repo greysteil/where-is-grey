@@ -33,7 +33,7 @@ group :test do
   gem 'rspec-its'                    # Allows `its(:method) { ... }`
   gem 'rack-test'                    # Testing Sinatra
 
-  gem 'webmock', '~> 3.19.1'         # Mocking API calls
+  gem 'webmock', '~> 3.20.0'         # Mocking API calls
 
   gem 'factory_bot'                  # Quickly instantiate models
 
