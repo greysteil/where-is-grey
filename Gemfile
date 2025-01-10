@@ -13,7 +13,7 @@ gem 'rake', '~> 13.2'                # Task manager
 gem 'rackup', '~> 2.2'               # CLI for running Rack-compatible applications
 
 gem 'spot-gps', '~> 0.3.1'           # Client library for SPOT GPS tracker
-gem 'exifr', '~> 1.4.0'              # Read image metadata, including GPS data
+gem 'exifr', '~> 1.4.1'              # Read image metadata, including GPS data
 gem 'google-api-client', '~> 0.53.0' # Pull images from Google Drive
 gem 'fog-aws', '~> 0.9.4'            # Push images up to S3
 

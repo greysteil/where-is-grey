@@ -43,7 +43,7 @@ GEM
     dotenv (3.1.7)
     drb (2.2.1)
     excon (0.95.0)
-    exifr (1.4.0)
+    exifr (1.4.1)
     factory_bot (6.5.0)
       activesupport (>= 5.0.0)
     faraday (2.7.2)
@@ -205,7 +205,7 @@ DEPENDENCIES
   activerecord (= 8.0.1)
   database_cleaner
   dotenv
-  exifr (~> 1.4.0)
+  exifr (~> 1.4.1)
   factory_bot
   fog-aws (~> 0.9.4)
   fog-local (~> 0.8.0)
