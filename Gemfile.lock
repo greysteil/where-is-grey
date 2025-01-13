@@ -105,7 +105,7 @@ GEM
     logger (1.6.3)
     memoist (0.16.2)
     method_source (1.1.0)
-    mini_magick (5.0.1)
+    mini_magick (5.1.0)
     mini_mime (1.1.2)
     minitest (5.25.4)
     multi_json (1.15.0)
