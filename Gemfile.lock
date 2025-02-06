@@ -96,7 +96,7 @@ GEM
       multi_json (~> 1.11)
       os (>= 0.9, < 2.0)
       signet (>= 0.16, < 2.a)
-    hashdiff (1.1.1)
+    hashdiff (1.1.2)
     httpclient (2.8.3)
     i18n (1.14.7)
       concurrent-ruby (~> 1.0)
@@ -145,7 +145,7 @@ GEM
       trailblazer-option (>= 0.1.1, < 0.2.0)
       uber (< 0.2.0)
     retriable (3.1.2)
-    rexml (3.3.9)
+    rexml (3.4.0)
     rspec (3.13.0)
       rspec-core (~> 3.13.0)
       rspec-expectations (~> 3.13.0)
@@ -192,7 +192,7 @@ GEM
       concurrent-ruby (~> 1.0)
     uber (0.1.0)
     uri (1.0.2)
-    webmock (3.24.0)
+    webmock (3.25.0)
       addressable (>= 2.8.0)
       crack (>= 0.3.2)
       hashdiff (>= 0.4.0, < 2.0.0)
@@ -226,7 +226,7 @@ DEPENDENCIES
   sinatra (= 4.1.1)
   sinatra-activerecord (= 2.0.28)
   spot-gps (~> 0.3.1)
-  webmock (~> 3.24.0)
+  webmock (~> 3.25.0)
 
 RUBY VERSION
    ruby 3.2.1p31
