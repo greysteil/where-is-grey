@@ -25,7 +25,7 @@ GEM
     base64 (0.2.0)
     benchmark (0.4.0)
     bigdecimal (3.1.9)
-    builder (3.2.4)
+    builder (3.3.0)
     coderay (1.1.3)
     concurrent-ruby (1.3.5)
     connection_pool (2.5.0)
@@ -42,7 +42,7 @@ GEM
     diff-lcs (1.5.1)
     dotenv (3.1.7)
     drb (2.2.1)
-    excon (0.95.0)
+    excon (0.112.0)
     exifr (1.4.1)
     factory_bot (6.5.1)
       activesupport (>= 6.1.0)
@@ -62,7 +62,7 @@ GEM
     fog-json (1.2.0)
       fog-core
       multi_json (~> 1.10)
-    fog-local (0.8.0)
+    fog-local (0.9.0)
       fog-core (>= 1.27, < 3.0)
     fog-xml (0.1.4)
       fog-core
@@ -210,7 +210,7 @@ DEPENDENCIES
   exifr (~> 1.4.1)
   factory_bot
   fog-aws (~> 0.9.4)
-  fog-local (~> 0.8.0)
+  fog-local (~> 0.9.0)
   google-api-client (~> 0.53.0)
   mini_magick
   pg (~> 1.5.9)
