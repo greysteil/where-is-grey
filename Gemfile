@@ -9,7 +9,7 @@ gem 'pg', '~> 1.5.9'                 # PostgreSQL gem
 gem 'sinatra-activerecord', '2.0.28' # Sinatra setup for AR
 
 gem 'prius', '~> 6.0'                # Environment variable management
-gem 'rake', '~> 13.2'                # Task manager
+gem 'rake', '~> 13.3'                # Task manager
 gem 'rackup', '~> 2.2'               # CLI for running Rack-compatible applications
 
 gem 'spot-gps', '~> 0.3.1'           # Client library for SPOT GPS tracker
