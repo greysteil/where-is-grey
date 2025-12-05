@@ -10,7 +10,7 @@ gem 'sinatra-activerecord', '2.0.28' # Sinatra setup for AR
 
 gem 'prius', '~> 6.0'                # Environment variable management
 gem 'rake', '~> 13.3'                # Task manager
-gem 'rackup', '~> 2.2'               # CLI for running Rack-compatible applications
+gem 'rackup', '~> 2.3'               # CLI for running Rack-compatible applications
 
 gem 'spot-gps', '~> 0.3.1'           # Client library for SPOT GPS tracker
 gem 'exifr', '~> 1.4.1'              # Read image metadata, including GPS data
