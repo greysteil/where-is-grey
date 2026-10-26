@@ -121,6 +121,7 @@ GEM
     multi_json (1.15.0)
     mustermann (3.0.4)
       ruby2_keywords (~> 0.0.1)
+    mutex_m (0.3.0)
     nio4r (2.7.5)
     nokogiri (1.19.4-arm64-darwin)
       racc (~> 1.4)
@@ -231,6 +232,7 @@ DEPENDENCIES
   fog-local (~> 0.9.0)
   google-api-client (~> 0.53.0)
   mini_magick
+  mutex_m
   pg (~> 1.7.0)
   prius (~> 6.0)
   pry
@@ -247,7 +249,7 @@ DEPENDENCIES
   webmock (~> 3.34.0)
 
 RUBY VERSION
-   ruby 4.0.9p0
+  ruby 4.0.9p0
 
 BUNDLED WITH
-   2.4.9
+  4.0.23

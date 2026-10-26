@@ -15,6 +15,7 @@ gem 'rackup', '~> 2.3'               # CLI for running Rack-compatible applicati
 gem 'spot-gps', '~> 0.3.1'           # Client library for SPOT GPS tracker
 gem 'exifr', '~> 1.5.1'              # Read image metadata, including GPS data
 gem 'google-api-client', '~> 0.53.0' # Pull images from Google Drive
+gem 'mutex_m'                        # Required by httpclient (no longer a default gem in Ruby 3.4+)
 gem 'fog-aws', '~> 0.9.4'            # Push images up to S3
 
 gem 'mini_magick'                    # Image manipulation (re-orienting for S3)
