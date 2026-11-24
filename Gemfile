@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby '4.0.9'
 
-gem 'sinatra', '4.2.1'               # Web framework
+gem 'sinatra', '4.2.2'               # Web framework
 gem 'puma'                           # Web server
 
 gem 'activerecord', '8.1.4.1'        # Object-relational mapper
