@@ -216,7 +216,7 @@ GEM
       concurrent-ruby (~> 1.0)
     uber (0.1.0)
     uri (1.1.2)
-    webmock (3.38.0)
+    webmock (3.40.0)
       addressable (>= 2.8.0)
       crack (>= 0.3.2)
       hashdiff (>= 0.4.0, < 2.0.0)
@@ -252,7 +252,7 @@ DEPENDENCIES
   sinatra (= 4.2.2)
   sinatra-activerecord (= 2.0.28)
   spot-gps (~> 0.3.1)
-  webmock (~> 3.38.0)
+  webmock (~> 3.40.0)
 
 RUBY VERSION
   ruby 4.0.9p0
